@@ -1227,6 +1227,7 @@ a {
     padding: 3px 10px;
     background: #384aeb;
     color: #fff;
+    transition: all .4s ease;
 }
 
 @media (max-width: 767px) {
@@ -3687,9 +3688,20 @@ a {
     top: 0;
     height: 100%;
     width: 100%;
-    color: black;
     content: "";
-    opacity: .9
+    isolation: isolate;
+}
+
+.login_box_area .login_box_img:after {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    inset: 0;
+    background: pink;
+    opacity: .8;
+    background-image: url("https://t3.ftcdn.net/jpg/01/01/05/24/360_F_101052491_D8WlkJsZclF5kO8LsA7AstXI9Ir4iuFl.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .login_box_area .login_box_img .hover {
@@ -3703,7 +3715,7 @@ a {
 
 .login_box_area .login_box_img .hover h4 {
     font-size: 24px;
-    color: #000;
+    color: #fff;
     font-weight: 500;
     margin-bottom: 15px
 }
@@ -3711,7 +3723,7 @@ a {
 .login_box_area .login_box_img .hover p {
     max-width: 390px;
     margin: 0px auto 28px;
-    color: #000
+    color: #fff
 }
 
 .login_box_area .login_box_img .hover .primary-btn {
@@ -4829,10 +4841,10 @@ a {
     }
 }
 
-.dataTables_paginate{
+.dataTables_paginate {
     margin-top: 20px;
 }
 
-.dataTables_length{
+.dataTables_length {
     display: inline-block;
 }

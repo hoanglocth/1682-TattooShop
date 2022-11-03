@@ -39,7 +39,7 @@ class TattooController extends Controller
             $book = Tattoo::create([
                 'name' => $request['name'],
                 'img' => $filename,
-                'author' => $request['author'],
+                'artist' => $request['artist'],
                 'price' => $request['price'],
                 'describes' => $request['describes'],
                 'category_id' => $request['category']

@@ -33,9 +33,9 @@
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <label for="">Author</label>
-                                <input type="text" class="form-control" placeholder="author" id="author"
-                                    name="author" value="{{ old('author') }}" required>
+                                <label for="">Artist</label>
+                                <input type="text" class="form-control" placeholder="artist" id="artist"
+                                    name="artist" value="{{ old('artist') }}" required>
                             </div>
 
                             <div class="col-md-12 form-group">

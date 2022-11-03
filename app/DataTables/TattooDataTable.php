@@ -77,7 +77,7 @@ class TattooDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('name'),
-            Column::make('author'),
+            Column::make('artist'),
             Column::make('describes'),
             Column::make('created_at'),
             Column::make('updated_at'),

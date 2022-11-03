@@ -17,7 +17,7 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Log in to enter</h3>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form class ="row login_form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="email" name="email"

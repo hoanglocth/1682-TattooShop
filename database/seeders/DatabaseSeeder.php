@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Da Nang',
             'firstname' => "Admin",
             'lastname' => "1",
-            'roles' => 0,
+            'roles' => 1,
             'email_verified_at' => now(),
             'password' => bcrypt('admin'), // password
             'remember_token' => Str::random(10),

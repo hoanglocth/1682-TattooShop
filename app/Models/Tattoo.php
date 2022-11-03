@@ -12,7 +12,7 @@ class Tattoo extends Model
     protected $table = "tattoos";
 
     protected $fillable = [
-    	'name', 'img','author','price','describes','category_id'
+    	'name', 'img','artist','price','describes','category_id'
     ];
 
 
