@@ -17,11 +17,12 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Log in to enter</h3>
-                        <form class ="row login_form" method="POST" action="{{ route('login') }}">
+                        <form class="row login_form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="email" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    value="{{ old('email') }}" required autocomplete="email" placeholder="Email"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                                 @error('email')
                                     <span style="display: block" class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +31,8 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="password" class="form-control" id="password" name="password" required
-                                    autocomplete="current-password">
+                                    autocomplete="current-password" placeholder="Password" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Password'">
                                 @error('password')
                                     <span style="display: block" class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
