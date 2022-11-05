@@ -149,7 +149,7 @@ a {
 }
 
 .header_area .navbar {
-    background: transparent;
+    background: #212529;
     padding: 0px;
     border: 0px;
     border-radius: 0px
@@ -161,7 +161,7 @@ a {
 
 .header_area .navbar .nav .nav-item .nav-link {
     text-transform: capitalize;
-    color: #222;
+    color: #999999;
     display: inline-block
 }
 
@@ -177,7 +177,7 @@ a {
 
 .header_area .navbar .nav .nav-item:hover .nav-link,
 .header_area .navbar .nav .nav-item.active .nav-link {
-    color: #384aeb
+    color: #fff
 }
 
 .header_area .navbar .nav .nav-item.submenu {
@@ -483,7 +483,7 @@ a {
     }
 
     .header_area .navbar {
-        background: #ffffff
+        background: #212529
     }
 
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {

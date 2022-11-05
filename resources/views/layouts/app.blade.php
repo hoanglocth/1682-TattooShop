@@ -41,20 +41,26 @@
                     <a class="navbar-brand logo_h" href="{{ route('home') }}">LOGO</a>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                            <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link"
+                                    href="{{ route('home') }}">Home</a></li>
                             @if (!Auth::check())
-                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a>
+                                <li class="nav-item {{ request()->is('login') ? 'active' : '' }}"><a class="nav-link"
+                                        href="{{ route('login') }}">Login</a></li>
+                                <li class="nav-item {{ request()->is('register') ? 'active' : '' }}"><a class="nav-link"
+                                        href="{{ route('register') }}">Register</a>
                                 </li>
                             @else
                                 @if (Auth::user()->roles == 1)
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}">Admin
+                                    <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}"><a
+                                            class="nav-link" href="{{ route('admin.index') }}">Admin
                                             Dashboard</a></li>
                                     @if (str_contains(Request::fullUrl(), 'admin'))
-                                        <li class="nav-item"><a class="nav-link"
+                                        <li class="nav-item {{ request()->is('category') ? 'active' : '' }}"><a
+                                                class="nav-link"
                                                 href="{{ route('admin.category.index') }}">Categories</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ route('admin.tattoo.index') }}">Tattoos</a></li>
+                                        <li class="nav-item {{ request()->is('tattoo') ? 'active' : '' }}"><a
+                                                class="nav-link" href="{{ route('admin.tattoo.index') }}">Tattoos</a>
+                                        </li>
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ route('admin.index') }}">Orders</a></li>
                                     @endif
