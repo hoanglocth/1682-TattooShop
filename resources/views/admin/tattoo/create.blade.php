@@ -6,24 +6,15 @@
             <a href="{{ route('admin.tattoo.index') }}"><button type="submit" value="submit"
                     class="button button-xs">Back</button></a>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="login_box_img">
-                        <div class="hover">
-                            <h4>New to our website?</h4>
-                            <p>There are advances being made in science and technology everyday, and a good example of this
-                                is the</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="r">
+                <div class="col-lg-6 mx-auto">
+                    <div class="login_form_inner" style="padding-top: 10px">
                         <h3>Create new tattoo</h3>
                         <form method="POST" action="{{ route('admin.tattoo.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-12 form-group">
                                 <label for="">Name</label>
-                                <input type="text" class="form-control" placeholder="name" id="name" name="name"
-                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input type="text" class="form-control" placeholder="Tatto name" id="name"
+                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                             </div>
 
                             <div class="col-md-12 form-group">
@@ -34,19 +25,19 @@
 
                             <div class="col-md-12 form-group">
                                 <label for="">Artist</label>
-                                <input type="text" class="form-control" placeholder="artist" id="artist"
+                                <input type="text" class="form-control" placeholder="Artist" id="artist"
                                     name="artist" value="{{ old('artist') }}" required>
                             </div>
 
                             <div class="col-md-12 form-group">
                                 <label for="">Price</label>
-                                <input type="number" class="form-control" placeholder="price" id="price" name="price"
+                                <input type="number" class="form-control" placeholder="Price" id="price" name="price"
                                     value="{{ old('price') }}" required>
                             </div>
 
                             <div class="col-md-12 form-group">
                                 <label for="">Descibes</label>
-                                <input type="text" class="form-control" placeholder="describes" id="describes"
+                                <input type="text" class="form-control" placeholder="Describes" id="describes"
                                     name="describes" value="{{ old('describes') }}" required>
                             </div>
 
@@ -59,8 +50,7 @@
                                 </select>
                             </div>
 
-
-                            <div class="col-md-12 form-group" style="padding-top: 10px">
+                            <div class="col-md-12 form-group">
                                 <button type="submit" value="submit"
                                     class="form-control button button-login w-100">Create</button>
                             </div>

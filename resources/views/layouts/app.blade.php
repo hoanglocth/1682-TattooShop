@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="/js/main.js"></script>
 
 
@@ -41,28 +41,43 @@
                     <a class="navbar-brand logo_h" href="{{ route('home') }}">LOGO</a>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link"
-                                    href="{{ route('home') }}">Home</a></li>
+                            <li class="nav-item {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"><a
+                                    class="nav-link" href="{{ route('home') }}">Home</a></li>
                             @if (!Auth::check())
-                                <li class="nav-item {{ request()->is('login') ? 'active' : '' }}"><a class="nav-link"
-                                        href="{{ route('login') }}">Login</a></li>
-                                <li class="nav-item {{ request()->is('register') ? 'active' : '' }}"><a class="nav-link"
-                                        href="{{ route('register') }}">Register</a>
+                                <li class="nav-item {{ Route::currentRouteName() === 'login' ? 'active' : '' }}"><a
+                                        class="nav-link" href="{{ route('login') }}">Login</a></li>
+                                <li class="nav-item {{ Route::currentRouteName() === 'register' ? 'active' : '' }}"><a
+                                        class="nav-link" href="{{ route('register') }}">Register</a>
                                 </li>
                             @else
                                 @if (Auth::user()->roles == 1)
-                                    <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}"><a
-                                            class="nav-link" href="{{ route('admin.index') }}">Admin
-                                            Dashboard</a></li>
+                                    <li
+                                        class="nav-item {{ Route::currentRouteName() === 'admin.index' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('admin.index') }}">Admin
+                                            Dashboard</a>
+                                    </li>
                                     @if (str_contains(Request::fullUrl(), 'admin'))
-                                        <li class="nav-item {{ request()->is('category') ? 'active' : '' }}"><a
-                                                class="nav-link"
-                                                href="{{ route('admin.category.index') }}">Categories</a></li>
-                                        <li class="nav-item {{ request()->is('tattoo') ? 'active' : '' }}"><a
-                                                class="nav-link" href="{{ route('admin.tattoo.index') }}">Tattoos</a>
+                                        <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.category.index' ? 'active' : '' }}">
+                                            <a class="nav-link"
+                                                href="{{ route('admin.category.index') }}">Categories</a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ route('admin.index') }}">Orders</a></li>
+                                        <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.tattoo.index' ? 'active' : '' }}">
+                                            <a class="nav-link" href="{{ route('admin.tattoo.index') }}">Tattoos</a>
+                                        </li>
+                                        <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.artist.index' ? 'active' : '' }}">
+                                            <a class="nav-link" href="{{ route('admin.artist.index') }}">Artists</a>
+                                        </li>
+                                        <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.trainingcourse.index' ? 'active' : '' }}">
+                                            <a class="nav-link" href="{{ route('admin.trainingcourse.index') }}">Courses</a>
+                                        </li>
+                                        <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.order.index' ? 'active' : '' }}">
+                                            <a class="nav-link" href="#">Orders</a>
+                                        </li>
                                     @endif
                                 @endif
                             @endif
@@ -77,8 +92,8 @@
     <main class="site-main">
         <div class="container">
             @if (session('class'))
-                <div class="alert alert-{{ session('class') }} alert-dismissible fade show">
-                    <li>{{ session('message') }}</li>
+                <div id="alert" class="alert alert-{{ session('class') }} alert-dismissible fade show">
+                    <a>{{ session('message') }}</a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -87,7 +102,82 @@
         </div>
         @yield('content')
     </main>
+    <!--================ Start footer Area  =================-->
+    <footer class="footer">
+        <div class="footer-area">
+            <div class="container">
+                <div class="row section_gap">
 
+                    <div class="offset-lg-0 col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="ml-40">
+                                <p class="sm-head">
+                                    <span class="fa fa-location-arrow"></span>
+                                    381 Nui Thanh, Hai Chau District, Da Nang City
+                                </p>
+                                <br>
+                                <p class="sm-head">
+                                    <span class="fa fa-phone"></span>
+                                    012345678
+                                </p>
+                                <br>
+                                <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    tattoodanang@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Business Hours</h4>
+                            <ul class="list">
+
+
+                                <li>Monday - Saturday: 08 AM - 18 PM</li>
+                                <li>Sunday: 10 AM - 16 PM</li>
+                                <li>Holiday: Cease</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Our Mission</h4>
+                            <p>
+                                "Built by True Artists, For True Artists"
+                            </p>
+                            <p>
+                                Helping tattoo artists and the tattoo community is at the heart of everything we do.
+                            </p>
+                            <p>
+                                Of course, we cannot do this alone. Your support and wide promotion of our products have
+                                helped us to get where we are. Together, we can make a difference and give back to the
+                                tattoo community!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved |
+                        <i class="fa fa-heart" aria-hidden="true"></i> Designed by Hoang Loc
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->
     <script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
     <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/vendors/skrollr.min.js"></script>
