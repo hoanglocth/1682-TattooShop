@@ -41,5 +41,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/create',  [App\Http\Controllers\Admin\TattooController::class, 'create'])->name('admin.tattoo.create');
 		Route::post('/create',  [App\Http\Controllers\Admin\TattooController::class, 'store'])->name('admin.tattoo.store');
 	});
+	Route::group(['prefix' => 'artists'], function(){
+		Route::get('/',  [App\Http\Controllers\Admin\ArtistController::class, 'index'])->name('admin.artist.index');
+		Route::get('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'create'])->name('admin.artist.create');
+		Route::post('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'store'])->name('admin.artist.store');
+	});
 
 });

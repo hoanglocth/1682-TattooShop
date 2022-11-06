@@ -71,10 +71,6 @@
                                             <a class="nav-link" href="{{ route('admin.artist.index') }}">Artists</a>
                                         </li>
                                         <li
-                                            class="nav-item {{ Route::currentRouteName() === 'admin.trainingcourse.index' ? 'active' : '' }}">
-                                            <a class="nav-link" href="{{ route('admin.trainingcourse.index') }}">Courses</a>
-                                        </li>
-                                        <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.order.index' ? 'active' : '' }}">
                                             <a class="nav-link" href="#">Orders</a>
                                         </li>
@@ -107,30 +103,20 @@
         <div class="footer-area">
             <div class="container">
                 <div class="row section_gap">
-
-                    <div class="offset-lg-0 col-lg-4 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Contact Us</h4>
-                            <div class="ml-40">
-                                <p class="sm-head">
-                                    <span class="fa fa-location-arrow"></span>
-                                    381 Nui Thanh, Hai Chau District, Da Nang City
-                                </p>
-                                <br>
-                                <p class="sm-head">
-                                    <span class="fa fa-phone"></span>
-                                    012345678
-                                </p>
-                                <br>
-                                <p class="sm-head">
-                                    <span class="fa fa-envelope"></span>
-                                    tattoodanang@gmail.com
-                                </p>
-                            </div>
+                            <h4 class="footer_title large_title">Our Mission</h4>
+                            <p>
+                                So seed seed green that winged cattle in. Gathering thing made fly you're no
+                                divided deep moved us lan Gathering thing us land years living.
+                            </p>
+                            <p>
+                                So seed seed green that winged cattle in. Gathering thing made fly you're no divided
+                                deep moved
+                            </p>
                         </div>
                     </div>
-
-                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                    <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title">Business Hours</h4>
                             <ul class="list">
@@ -143,20 +129,34 @@
                         </div>
                     </div>
 
-                    <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-6">
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
-                            <h4 class="footer_title">Our Mission</h4>
-                            <p>
-                                "Built by True Artists, For True Artists"
-                            </p>
-                            <p>
-                                Helping tattoo artists and the tattoo community is at the heart of everything we do.
-                            </p>
-                            <p>
-                                Of course, we cannot do this alone. Your support and wide promotion of our products have
-                                helped us to get where we are. Together, we can make a difference and give back to the
-                                tattoo community!
-                            </p>
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="ml-40">
+                                <p class="sm-head">
+                                    <span class="fa fa-location-arrow"></span>
+                                    Head Office
+                                </p>
+                                <p>123, Main Street, Your City</p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-phone"></span>
+                                    Phone Number
+                                </p>
+                                <p>
+                                    +123 456 7890 <br>
+                                    +123 456 7890
+                                </p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    Email
+                                </p>
+                                <p>
+                                    free@infoexample.com <br>
+                                    www.infoexample.com
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,7 @@ class TattooController extends Controller
         }
 
         if (
-            $book = Tattoo::create([
+            $tattoo = Tattoo::create([
                 'name' => $request['name'],
                 'img' => $filename,
                 'artist' => $request['artist'],
@@ -45,7 +45,7 @@ class TattooController extends Controller
                 'category_id' => $request['category']
             ])
         ) {
-            return redirect()->route('Book.Edit', $book->id)->with(['class' => 'success', 'message' => 'Add success']);
+            return redirect()->back()->with(['class' => 'success', 'message' => 'Add success']);
         } else {
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error database']);
         }

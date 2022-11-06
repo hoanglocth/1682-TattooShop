@@ -8,7 +8,7 @@
                     class="button button-xs">Back</button></a>
             <div class="row">
                 <div class="col-lg-6 mx-auto">
-                    <div class="login_form_inner" style="padding-top: 10px">
+                    <div class="login_form_inner">
                         <h3>Create new artist</h3>
                         <form method="POST" action="{{ route('admin.artist.store') }}" enctype="multipart/form-data">
                             @csrf
