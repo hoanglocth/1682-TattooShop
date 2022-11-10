@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tattoos', function (Blueprint $table) {
+        Schema::create('training_courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('img');
-            $table->string('artist');
-            $table->integer('price')->default(0);
             $table->longText('describes')->nullable();
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->date('from_date')->nullable();
+            $table->date('to_date')->nullable();
+            $table->longText('schedule')->nullable();
             // $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tattoos');
+        Schema::dropIfExists('training_courses');
     }
 };

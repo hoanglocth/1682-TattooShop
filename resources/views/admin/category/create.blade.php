@@ -7,13 +7,13 @@
                     class="button button-xs">Back</button></a>
             <div class="row">
                 <div class="col-lg-6 mx-auto">
-                    <div class="login_form_inner">
+                    <div class="login_form_inner" style="padding-top: 10px">
                         <h3>Create new category</h3>
                         <form method="POST" action="{{ route('admin.category.store') }}">
                             @csrf
                             <div class="col-md-12 form-group">
                                 <label for="">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name of category"
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Category name"
                                     value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

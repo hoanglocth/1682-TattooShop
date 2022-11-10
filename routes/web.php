@@ -46,5 +46,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'create'])->name('admin.artist.create');
 		Route::post('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'store'])->name('admin.artist.store');
 	});
+	Route::group(['prefix' => 'traning-courses'], function(){
+		Route::get('/',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'index'])->name('admin.trainingcourse.index');
+		Route::get('/create',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'create'])->name('admin.trainingcourse.create');
+		Route::post('/create',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'store'])->name('admin.trainingcourse.store');
+	});
 
 });

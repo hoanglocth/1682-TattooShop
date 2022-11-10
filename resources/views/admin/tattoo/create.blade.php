@@ -7,7 +7,7 @@
                     class="button button-xs">Back</button></a>
             <div class="row">
                 <div class="col-lg-6 mx-auto">
-                    <div class="login_form_inner">
+                    <div class="login_form_inner" style="padding-top: 10px">
                         <h3>Create new tattoo</h3>
                         <form method="POST" action="{{ route('admin.tattoo.store') }}" enctype="multipart/form-data">
                             @csrf
