@@ -3,9 +3,13 @@
 @section('content')
     <section class="login_box_area section-margin">
         <div class="container">
-            <h1>List Training Courses</h1>
-            <a href="{{ route('admin.trainingcourse.create') }}"><button type="submit" value="submit"
-                    class="button">Create Training Course</button></a>
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>Training Courses Management</h1>
+                </div>
+            </div>
+            <a href="{{ route('admin.trainingcourse.create') }}"><button type="submit" value="submit" class="button">Create
+                    Training Course</button></a>
             <div class="row">
                 <div class="col-lg-12">
                     {{ $dataTable->table() }}

@@ -3,7 +3,11 @@
 @section('content')
     <section class="login_box_area section-margin">
         <div class="container">
-            <h1>List Artists</h1>
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>Artists Management</h1>
+                </div>
+            </div>
             <a href="{{ route('admin.artist.create') }}"><button type="submit" value="submit" class="button">Create
                     artist</button></a>
             <div class="row">

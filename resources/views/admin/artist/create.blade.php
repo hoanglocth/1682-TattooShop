@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="login_form_inner" style="padding-top: 10px">
-                        <h3>Create new artist</h3>
+                        <h3 style="margin-bottom: 10px">Create new artist</h3>
                         <form method="POST" action="{{ route('admin.artist.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-12 form-group">

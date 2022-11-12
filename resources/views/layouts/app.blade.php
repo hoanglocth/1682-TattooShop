@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -18,14 +17,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="/js/main.js"></script>
 
-
     <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="/vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="/vendors/owl-carousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
-
     <link rel="stylesheet" href="/css/style.css">
     @yield('custom-css')
 </head>
@@ -38,7 +35,7 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href="{{ route('home') }}">LOGO</a>
+                    <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="images/logo.png" alt=""></a>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"><a
@@ -72,7 +69,8 @@
                                         </li>
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.trainingcourse.index' ? 'active' : '' }}">
-                                            <a class="nav-link" href="{{ route('admin.trainingcourse.index') }}">Courses</a>
+                                            <a class="nav-link"
+                                                href="{{ route('admin.trainingcourse.index') }}">Courses</a>
                                         </li>
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.order.index' ? 'active' : '' }}">
@@ -108,7 +106,7 @@
             <div class="container">
                 <div class="row section_gap">
 
-                    <div class="offset-lg-0 col-lg-4 col-md-6 col-sm-6">
+                    <div class="offset-lg-0 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title">Contact Us</h4>
                             <div class="ml-40">
@@ -130,12 +128,10 @@
                         </div>
                     </div>
 
-                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                    <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget tp_widgets">
                             <h4 class="footer_title">Business Hours</h4>
                             <ul class="list">
-
-
                                 <li>Monday - Saturday: 08 AM - 18 PM</li>
                                 <li>Sunday: 10 AM - 16 PM</li>
                                 <li>Holiday: Cease</li>
