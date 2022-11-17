@@ -43,7 +43,7 @@ class CategoryController extends Controller
     public function remove($id){
         if($category = Category::find($id)){
             if($category->delete()){
-                return response()->json(['error' => 0, 'message' => 'Remove success']);
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
             }
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error can not be delete']);
         }

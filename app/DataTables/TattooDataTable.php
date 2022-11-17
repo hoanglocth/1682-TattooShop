@@ -23,7 +23,11 @@ class TattooDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'tattoo.action')
+            ->addColumn('action', function($row){
+                $actionBtn = '<a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 

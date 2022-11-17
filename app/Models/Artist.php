@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,13 @@ class Artist extends Model
     protected $table = "artists";
 
     protected $fillable = [
-    	'name', 'img', 'describes'
+        'name',
+        'img',
+        'describes'
     ];
 
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }

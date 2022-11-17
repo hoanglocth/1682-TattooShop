@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/',  [App\Http\Controllers\Admin\TattooController::class, 'index'])->name('admin.tattoo.index');
 		Route::get('/create',  [App\Http\Controllers\Admin\TattooController::class, 'create'])->name('admin.tattoo.create');
 		Route::post('/create',  [App\Http\Controllers\Admin\TattooController::class, 'store'])->name('admin.tattoo.store');
+		Route::get('/remove/{id}',  [App\Http\Controllers\Admin\TattooController::class, 'remove'])->name('admin.tattoo.remove');
 	});
 	Route::group(['prefix' => 'artists'], function(){
 		Route::get('/',  [App\Http\Controllers\Admin\ArtistController::class, 'index'])->name('admin.artist.index');

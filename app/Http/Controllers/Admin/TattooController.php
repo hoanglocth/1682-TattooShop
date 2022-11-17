@@ -50,4 +50,14 @@ class TattooController extends Controller
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error database']);
         }
     }
+
+    public function remove($id){
+        if($tattoo = Tattoo::find($id)){
+            if($tattoo->delete()){
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
+            }
+            return redirect()->back()->with(['class' => 'danger', 'message' => 'Error can not be delete']);
+        }
+        return redirect()->back()->with(['class' => 'danger', 'message' => 'Not found']);
+    }
 }

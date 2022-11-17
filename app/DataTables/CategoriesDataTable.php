@@ -22,8 +22,13 @@ class CategoriesDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
+        
         return (new EloquentDataTable($query))
-            ->addColumn('action', '')
+            ->addColumn('action', function($row){
+                $actionBtn = '<a href="'. route('admin.category.remove', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
