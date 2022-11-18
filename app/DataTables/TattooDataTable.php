@@ -24,7 +24,11 @@ class TattooDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row){
-                $actionBtn = '<a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                $actionBtn = '<div class="btn-group" role="group" >                
+                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="view btn btn-success btn-sm mr-1"><i class="fa fa-eye"></i></a>
+                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                </div>';
                 return $actionBtn;
             })
             ->rawColumns(['action'])
@@ -81,6 +85,7 @@ class TattooDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('name'),
+            Column::make('category_id'),
             Column::make('artist'),
             Column::make('describes'),
             Column::make('created_at'),
