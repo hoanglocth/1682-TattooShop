@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ class Tattoo extends Model
     protected $table = "tattoos";
 
     protected $fillable = [
-    	'name', 'img','artist','price','describes','category_id'
+    	'name', 'img','artist','price','describes','category_id', 'artist_id'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -20,4 +21,11 @@ class Tattoo extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function category(){
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function artists(){
+        return $this->hasOne(Artist::class, 'id', 'artist_id');
+    }
 }

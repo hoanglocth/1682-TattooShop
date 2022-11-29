@@ -23,15 +23,23 @@ class TattooDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addColumn('image', function($row){
+                return '<img src="/'.$row->img.'" alt="">';
+            })
             ->addColumn('action', function($row){
                 $actionBtn = '<div class="btn-group" role="group" >                
                 <a href="'. route('admin.tattoo.remove', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
-                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="view btn btn-success btn-sm mr-1"><i class="fa fa-eye"></i></a>
                 <a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
                 </div>';
                 return $actionBtn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('artist', function($row){
+                return $row->artists->name;
+            })
+            ->rawColumns(['action','image'])
             ->setRowId('id');
     }
 
@@ -78,18 +86,20 @@ class TattooDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id'),
+            Column::make('image'),
+            Column::make('name'),
+            Column::make('price'),
+            Column::make('describes'),
+            Column::make('category'),
+            Column::make('artist'),
+            Column::make('created_at'),
+            Column::make('updated_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('category_id'),
-            Column::make('artist'),
-            Column::make('describes'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

@@ -24,12 +24,6 @@
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <label for="">Artist</label>
-                                <input type="text" class="form-control" placeholder="Artist" id="artist"
-                                    name="artist" value="{{ old('artist') }}" required>
-                            </div>
-
-                            <div class="col-md-12 form-group">
                                 <label for="">Price</label>
                                 <input type="number" class="form-control" placeholder="Price" id="price" name="price"
                                     value="{{ old('price') }}" required>
@@ -37,8 +31,17 @@
 
                             <div class="col-md-12 form-group">
                                 <label for="">Descibes</label>
-                                <input type="text" class="form-control" placeholder="Describes" id="describes"
-                                    name="describes">
+                                <textarea cols="40" rows="5" class="form-control" placeholder="Describes" id="describes"
+                                    name="describes"></textarea>
+                            </div>
+
+                            <div class="col-md-12 form-group" style="margin-bottom: 60px">
+                                <label for="">Artist</label>
+                                <select name="artist" class="form-control nice-select w-100">
+                                    @foreach ($artists as $artist)
+                                        <option value="{{ $artist->id }}">{{ $artist->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-md-12 form-group" style="margin-bottom: 60px">

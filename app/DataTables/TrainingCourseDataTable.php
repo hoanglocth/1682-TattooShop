@@ -78,6 +78,7 @@ class TrainingCourseDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('describes'),
+            Column::make('price'),
             Column::make('from_date'),
             Column::make('to_date'),
             Column::make('schedule'),

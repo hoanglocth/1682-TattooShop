@@ -17,6 +17,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="/js/main.js"></script>
 
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
     <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
@@ -82,7 +83,8 @@
                                         </li>
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.order.index' ? 'active' : '' }}">
-                                            <a class="nav-link" href="#">Orders</a>
+                                            <a class="nav-link"
+                                                href="{{ route('admin.order.index') }}">Orders</a>
                                         </li>
                                     @endif
                                 @endif
@@ -96,7 +98,7 @@
     <!--================ End Header Menu Area =================-->
 
     <main class="site-main">
-        <div class="container">
+        <div class="container" style="margin-top: 19px">
             @if (session('class'))
                 <div id="alert" class="alert alert-{{ session('class') }} alert-dismissible fade show">
                     <a>{{ session('message') }}</a>
@@ -182,7 +184,7 @@
         </div>
     </footer>
     <!--================ End footer Area  =================-->
-    <script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script ssrc="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/vendors/skrollr.min.js"></script>
     <script src="/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -190,6 +192,7 @@
     <script src="/vendors/jquery.ajaxchimp.min.js"></script>
     <script src="/vendors/mail-script.js"></script>
     <script src="js/main.js"></script>
+    {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
     @yield('custom-js')
 </body>
 

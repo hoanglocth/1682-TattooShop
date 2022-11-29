@@ -26,8 +26,8 @@
 
                             <div class="col-md-12 form-group">
                                 <label for="">Descibes</label>
-                                <input type="text" class="form-control" placeholder="Describes" id="describes"
-                                    name="describes" value="{{ old('describes') }}" required>
+                                <textarea cols="40" rows="5" class="form-control" placeholder="Describes" id="describes"
+                                    name="describes"></textarea>
                             </div>
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" class="button button-login w-100">Create</button>

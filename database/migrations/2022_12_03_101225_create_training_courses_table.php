@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('img');
             $table->longText('describes')->nullable();
+            $table->integer('price')->default(0);
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
             $table->longText('schedule')->nullable();

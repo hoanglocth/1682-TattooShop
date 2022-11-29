@@ -23,7 +23,14 @@ class ArtistDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'artist.action')
+            ->addColumn('action', function($row){
+                $actionBtn = '<div class="btn-group" role="group" >
+                <a href="'. route('admin.artist.remove', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>     
+                <a href="'. route('admin.artist.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                </div>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -70,16 +77,16 @@ class ArtistDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
             Column::make('name'),
             Column::make('describes'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
         ];
     }
 

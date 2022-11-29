@@ -41,4 +41,14 @@ class ArtistController extends Controller
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Error database']);
         }
     }
+
+    public function remove($id){
+        if($artist = Artist::find($id)){
+            if($artist->delete()){
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Remove success']);
+            }
+            return redirect()->back()->with(['class' => 'danger', 'message' => 'Error can not be delete']);
+        }
+        return redirect()->back()->with(['class' => 'danger', 'message' => 'Not found']);
+    }
 }

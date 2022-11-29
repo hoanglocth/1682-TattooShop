@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\TattooDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Tattoo;
 use Illuminate\Http\Request;
@@ -20,13 +21,18 @@ class TattooController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.tattoo.create', compact('categories'));
+        $artists = Artist::all();
+        return view('admin.tattoo.create', compact('categories','artists'));
     }
 
     public function store(Request $request)
     {
         if (!Category::find($request->category)) {
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Category not found']);
+        }
+
+        if (!Artist::find($request->artist)) {
+            return redirect()->back()->with(['class' => 'danger', 'message' => 'Artist not found']);
         }
 
         if ($request->hasFile('img')) {
@@ -42,7 +48,8 @@ class TattooController extends Controller
                 'artist' => $request['artist'],
                 'price' => $request['price'],
                 'describes' => $request['describes'],
-                'category_id' => $request['category']
+                'category_id' => $request['category'],
+                'artist_id' => $request['artist']
             ])
         ) {
             return redirect()->back()->with(['class' => 'success', 'message' => 'Add success']);
