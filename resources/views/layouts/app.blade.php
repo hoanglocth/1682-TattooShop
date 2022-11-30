@@ -30,7 +30,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
         <div class="main_menu">
@@ -111,7 +111,7 @@
         @yield('content')
     </main>
     <!--================ Start footer Area  =================-->
-    <footer class="footer">
+    <footer class="mt-auto">
         <div class="footer-area">
             <div class="container">
                 <div class="row section_gap">
