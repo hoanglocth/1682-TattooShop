@@ -22,7 +22,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['middleware' => 'auth'], function(){
-	
+	Route::group(['prefix' => 'account'], function(){
+		Route::get('/',[App\Http\Controllers\UserController::class, 'index'])->name('account.index');
+		Route::get('/edit',[App\Http\Controllers\UserController::class, 'edit'])->name('account.edit');
+		Route::post('/edit',[App\Http\Controllers\UserController::class, 'store'])->name('account.store');
+	});
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
@@ -42,17 +46,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::post('/create',  [App\Http\Controllers\Admin\TattooController::class, 'store'])->name('admin.tattoo.store');
 		Route::get('/remove/{id}',  [App\Http\Controllers\Admin\TattooController::class, 'remove'])->name('admin.tattoo.remove');
 	});
+
 	Route::group(['prefix' => 'artists'], function(){
 		Route::get('/',  [App\Http\Controllers\Admin\ArtistController::class, 'index'])->name('admin.artist.index');
 		Route::get('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'create'])->name('admin.artist.create');
 		Route::post('/create',  [App\Http\Controllers\Admin\ArtistController::class, 'store'])->name('admin.artist.store');
 		Route::get('/remove/{id}',  [App\Http\Controllers\Admin\ArtistController::class, 'remove'])->name('admin.artist.remove');
 	});
+
 	Route::group(['prefix' => 'traning-courses'], function(){
 		Route::get('/',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'index'])->name('admin.trainingcourse.index');
 		Route::get('/create',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'create'])->name('admin.trainingcourse.create');
 		Route::post('/create',  [App\Http\Controllers\Admin\TrainingCourseController::class, 'store'])->name('admin.trainingcourse.store');
 	});
+
 	Route::group(['prefix' => 'orders'], function(){
 		Route::get('/',  [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.order.index');
 	});
