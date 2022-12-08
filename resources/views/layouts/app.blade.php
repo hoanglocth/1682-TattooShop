@@ -83,11 +83,15 @@
                                         </li>
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.order.index' ? 'active' : '' }}">
-                                            <a class="nav-link"
-                                                href="{{ route('admin.order.index') }}">Orders</a>
+                                            <a class="nav-link" href="{{ route('admin.order.index') }}">Orders</a>
                                         </li>
                                     @endif
                                 @endif
+
+                                <li
+                                    class="nav-item {{ Route::currentRouteName() === 'account.index' ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
+                                </li>
                             @endif
                         </ul>
                     </div>
@@ -194,6 +198,7 @@
     <script src="js/main.js"></script>
     {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
     @yield('custom-js')
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

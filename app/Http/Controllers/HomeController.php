@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Tattoo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::all();
+
+        $tattoos = Tattoo::with('artists')->orderByDesc('created_at')->take(50)->get();
+
+        return view('home', [
+            'categories' => $categories,
+            'tattoos' => $tattoos
+        ]);
     }
 }

@@ -27,7 +27,17 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/edit',[App\Http\Controllers\UserController::class, 'edit'])->name('account.edit');
 		Route::post('/edit',[App\Http\Controllers\UserController::class, 'store'])->name('account.store');
 	});
+
+	
 });
+
+Route::group(['prefix' => 'cart'], function(){
+	Route::get('/', [App\Http\Controllers\CartController::class, 'card'])->name('cart');
+	Route::get('/add/{id}',[App\Http\Controllers\CartController::class, 'add'])->name('card.add');
+	Route::delete('/remove_from_cart', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+	Route::get('submit',[App\Http\Controllers\CartController::class, 'submit'])->name('cart.submit')->middleware('auth');
+});
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.index');
