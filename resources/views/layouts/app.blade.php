@@ -93,6 +93,18 @@
                                     <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
                                 </li>
                             @endif
+                            <li class="nav-item">
+                                <a href="{{ route('cart.index') }}">
+
+                                    @if (!session()->get('cart'))
+                                        <button><i class="ti-shopping-cart"></i><span
+                                                class="nav-shop__circle">0</span></button>
+                                    @else
+                                        <button><i class="ti-shopping-cart"></i><span
+                                                class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
+                                    @endif
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -198,7 +210,7 @@
     <script src="js/main.js"></script>
     {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
     @yield('custom-js')
-    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/cart.js') }}"></script>
 </body>
 
 </html>

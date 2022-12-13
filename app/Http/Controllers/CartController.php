@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tattoo;
 use Illuminate\Http\Request;
+use DB;
 
 class CartController extends Controller
 {
-    public function cart(){
+    public function index(){
 		return view('cart');
 	}
 
@@ -58,37 +60,16 @@ class CartController extends Controller
 		return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong.']);
 	}
 
-	public function submit_cart(){
+	public function submit(){
 		$cart = session()->get('cart');
 		$total = session()->get('total');
 		if(!($cart || $total)) return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong.']);
-		//Dang muon sach theo mot don hang khac
-		$ordering = Order::where('user_id','=',\Auth::user()->id)->wherein('status', [1,2,4])->get();
-		if (count($ordering) >= 1) {
-			switch ($ordering[0]->status) {
-				case 1:
-				$message = "You are watting admin submit orther cart !";
-				break;
-				case 2:
-				$message = "You are have orther cart, please go to library to receive tattoo !";
-				break;
-				case 4:
-				$message = "You are borrowing tattoos, go to library give tattoo back to order orther cart";
-				break;
-				default:
-				$message = "Something when wrong ,contact admin to support !";
-				break;
-			}
-			return redirect()->back()->with(['class' => 'warning', 'message' => $message]);
-		}
-		if(Auth::user()->account_expiry_date < now()){
-			return redirect()->back()->with(['class' => 'danger', 'message' => "Can't submit cart because your account has been expiry"]);
-		}
+		
 		DB::beginTransaction();
 		try {
-			$order = DB::table('order')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now()]);
+			$order = DB::table('orders')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now()]);
 			foreach($cart as $c){
-				DB::table('detail_order')->insert(['order_id' => $order,'tattoo_id' => $c["id"],'created_at' => now(),'updated_at' => now()]);
+				DB::table('detail_orders')->insert(['order_id' => $order,'tattoo_id' => $c["id"],'created_at' => now(),'updated_at' => now()]);
 			}
 			DB::commit();
 		} catch (Exception $e) {
@@ -97,6 +78,6 @@ class CartController extends Controller
 		}
 		session()->forget('cart');
 		session()->forget('total');
-		return redirect()->back()->with(['class' => 'success', 'message' => 'Your cart is submited, wait for admin check and go to library to get tattoo !']);
+		return redirect()->back()->with(['class' => 'success', 'message' => 'Your cart is submited, wait for admin check !']);
 	}
 }
