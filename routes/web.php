@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/wait', [App\Http\Controllers\OrderController::class, 'wait'])->name('order.wait');
 		Route::get('/confirmed', [App\Http\Controllers\OrderController::class, 'confirmed'])->name('order.confirmed');
 		Route::get('/history', [App\Http\Controllers\OrderController::class, 'history'])->name('order.history');
+		Route::delete('/remove',[App\Http\Controllers\OrderController::class, 'remove'])->name('order.remove');
 	}
 	);
 

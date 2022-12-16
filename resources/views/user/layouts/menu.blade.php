@@ -30,9 +30,8 @@
         </div>
         <div class="block-content">
             <ul>
-                <li class="{{Request::is('account/order/wait') ? 'current' : ''}}"><a href="">Wait for confirmation</a></li>
-                <li class="{{Request::is('account/order/confirmed') ? 'current' : ''}}"><a href="">Confirmed</a></li>
-                <li class="{{Request::is('account/order/borrow') ? 'current' : ''}}"><a href="">Borrowing Books</a></li>
+                <li class="{{Request::is('account/order/wait') ? 'current' : ''}}"><a href="{{ route('order.wait') }}">Wait for confirmation</a></li>
+                <li class="{{Request::is('account/order/confirmed') ? 'current' : ''}}"><a href="{{ route('order.confirmed') }}">Confirmed</a></li>
                 <li class="{{Request::is('account/order/history') ? 'current' : ''}}"><a href="">History</a></li>
             </ul>
         </div>
