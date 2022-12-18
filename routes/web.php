@@ -43,7 +43,7 @@ Route::group(['prefix' => 'cart'], function () {
 	Route::get('/', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 	Route::get('/add/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('card.add');
 	Route::delete('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
-	Route::get('submit', [App\Http\Controllers\CartController::class, 'submit'])->name('cart.submit')->middleware('auth');
+	Route::post('submit', [App\Http\Controllers\CartController::class, 'submit'])->name('cart.submit')->middleware('auth');
 });
 
 

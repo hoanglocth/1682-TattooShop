@@ -60,24 +60,28 @@ class CartController extends Controller
 		return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong.']);
 	}
 
-	public function submit(){
-		$cart = session()->get('cart');
-		$total = session()->get('total');
-		if(!($cart || $total)) return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong.']);
-		
-		DB::beginTransaction();
-		try {
-			$order = DB::table('orders')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now()]);
-			foreach($cart as $c){
-				DB::table('detail_orders')->insert(['order_id' => $order,'tattoo_id' => $c["id"],'created_at' => now(),'updated_at' => now()]);
+	public function submit(Request $request){
+		if($request->booking_date){
+
+			$cart = session()->get('cart');
+			$total = session()->get('total');
+			if(!($cart || $total)) return redirect()->back()->with(['class' => 'danger', 'message' => 'Something wrong.']);
+			
+			DB::beginTransaction();
+			try {
+				$order = DB::table('orders')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now(),'booking_date' => $request->booking_date]);
+				foreach($cart as $c){
+					DB::table('detail_orders')->insert(['order_id' => $order,'tattoo_id' => $c["id"],'created_at' => now(),'updated_at' => now()]);
+				}
+				DB::commit();
+			} catch (Exception $e) {
+				DB::rollBack();
+				throw new Exception($e->getMessage());
 			}
-			DB::commit();
-		} catch (Exception $e) {
-			DB::rollBack();
-			throw new Exception($e->getMessage());
+			session()->forget('cart');
+			session()->forget('total');
+			return redirect()->back()->with(['class' => 'success', 'message' => 'Your cart is submited, wait for admin check !']);
 		}
-		session()->forget('cart');
-		session()->forget('total');
-		return redirect()->back()->with(['class' => 'success', 'message' => 'Your cart is submited, wait for admin check !']);
+		return redirect()->back()->with(['class' => 'danger', 'message' => 'Choose date']);
 	}
 }

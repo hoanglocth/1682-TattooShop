@@ -60,8 +60,12 @@
                         <td colspan="2" class="hidden-xs"></td>
                         @if (Auth::check())
                             <td class="hidden-xs text-center">
-                                <a href="{{ route('cart.submit') }}"><button type="button" class="btn btn-success">Submit
-                                        Cart</button></a>
+								<form action="{{ route('cart.submit') }}" method="post">
+									@csrf
+									<label for="booking_date">Booking Date</label>
+									<input type="datetime" name="booking_date"/>
+									<button type="submit">Submit Order</button>
+								</form>
                             </td>
                         @else
                             <p>You must login to checkout this cart</p>
