@@ -92,6 +92,10 @@
                                     class="nav-item {{ Route::currentRouteName() === 'account.index' ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
                                 </li>
+                                <li
+                                    class="nav-item">
+                                    <a class="nav-link" href="#">Courses</a>
+                                </li>
                             @endif
                             <li class="nav-item">
                                 <a href="{{ route('cart.index') }}">
