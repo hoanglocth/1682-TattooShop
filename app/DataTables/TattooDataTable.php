@@ -28,7 +28,7 @@ class TattooDataTable extends DataTable
             })
             ->addColumn('action', function($row){
                 $actionBtn = '<div class="btn-group" role="group" >                
-                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                <a href="'. route('admin.tattoo.edit', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
                 <a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
                 </div>';
                 return $actionBtn;

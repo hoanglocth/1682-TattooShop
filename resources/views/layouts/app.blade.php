@@ -86,29 +86,29 @@
                                             <a class="nav-link" href="{{ route('admin.order.index') }}">Orders</a>
                                         </li>
                                     @endif
+                                @else
+                                    <li
+                                        class="nav-item {{ Route::currentRouteName() === 'account.index' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Courses</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('cart.index') }}">
+
+                                            @if (!session()->get('cart'))
+                                                <button><i class="ti-shopping-cart"></i><span
+                                                        class="nav-shop__circle">0</span></button>
+                                            @else
+                                                <button><i class="ti-shopping-cart"></i><span
+                                                        class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
+                                            @endif
+                                        </a>
+                                    </li>
                                 @endif
-
-                                <li
-                                    class="nav-item {{ Route::currentRouteName() === 'account.index' ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
-                                </li>
-                                <li
-                                    class="nav-item">
-                                    <a class="nav-link" href="#">Courses</a>
-                                </li>
                             @endif
-                            <li class="nav-item">
-                                <a href="{{ route('cart.index') }}">
-
-                                    @if (!session()->get('cart'))
-                                        <button><i class="ti-shopping-cart"></i><span
-                                                class="nav-shop__circle">0</span></button>
-                                    @else
-                                        <button><i class="ti-shopping-cart"></i><span
-                                                class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
-                                    @endif
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

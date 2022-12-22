@@ -56,6 +56,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.category.create');
 		Route::post('/create', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.category.store');
 		Route::get('/remove/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'remove'])->name('admin.category.remove');
+		Route::get('/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin.category.edit');
+		Route::post('/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.category.update');
 	}
 	);
 
@@ -64,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/create', [App\Http\Controllers\Admin\TattooController::class, 'create'])->name('admin.tattoo.create');
 		Route::post('/create', [App\Http\Controllers\Admin\TattooController::class, 'store'])->name('admin.tattoo.store');
 		Route::get('/remove/{id}', [App\Http\Controllers\Admin\TattooController::class, 'remove'])->name('admin.tattoo.remove');
+		Route::get('/edit/{id}', [App\Http\Controllers\Admin\TattooController::class, 'edit'])->name('admin.tattoo.edit');
+		Route::post('/update/{id}', [App\Http\Controllers\Admin\TattooController::class, 'update'])->name('admin.tattoo.update');
 	}
 	);
 
@@ -72,6 +76,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/create', [App\Http\Controllers\Admin\ArtistController::class, 'create'])->name('admin.artist.create');
 		Route::post('/create', [App\Http\Controllers\Admin\ArtistController::class, 'store'])->name('admin.artist.store');
 		Route::get('/remove/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'remove'])->name('admin.artist.remove');
+		Route::get('/edit/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'edit'])->name('admin.artist.edit');
+		Route::post('/update/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'update'])->name('admin.artist.update');
 	}
 	);
 

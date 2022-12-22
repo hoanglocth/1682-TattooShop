@@ -49,4 +49,20 @@ class CategoryController extends Controller
         }
         return redirect()->back()->with(['class' => 'danger', 'message' => 'Not found']);
     }
+
+    public function edit($id){
+        if($category = Category::find($id)){
+            return view('admin.category.edit', compact('category'));
+        }
+        return redirect()->back()->with(['class' => 'danger', 'message' => 'Not found']);
+    }
+    public function update($id, request $request){
+        if($category = Category::find($request->id)){
+            $newname = ($request->name !== NULL) ? $request->name : $category->name;
+            if($category->update(['name' => $newname])){
+                return redirect()->back()->with(['class' => 'success', 'message' => 'Edit success']);
+            }
+        }
+        return response()->json(['error' => 1, 'message' => 'Not Found']);
+    }
 }

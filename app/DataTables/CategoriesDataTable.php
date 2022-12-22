@@ -26,7 +26,7 @@ class CategoriesDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($row){
                 $actionBtn = '<div class="btn-group" role="group" >
-                <a href="'. route('admin.category.remove', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>     
+                <a href="'. route('admin.category.edit', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>     
                 <a href="'. route('admin.category.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
                 </div>';
                 return $actionBtn;
