@@ -2,6 +2,7 @@
 
 
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col-3">
             @include('user.layouts.menu')
@@ -73,6 +74,7 @@
             @endif
         </div>
     </div>
+</div>
 @endsection
 
 @section('custom-js')

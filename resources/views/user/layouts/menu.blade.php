@@ -32,7 +32,7 @@
             <ul>
                 <li class="{{Request::is('account/order/wait') ? 'current' : ''}}"><a href="{{ route('order.wait') }}">Wait for confirmation</a></li>
                 <li class="{{Request::is('account/order/confirmed') ? 'current' : ''}}"><a href="{{ route('order.confirmed') }}">Confirmed</a></li>
-                <li class="{{Request::is('account/order/history') ? 'current' : ''}}"><a href="">History</a></li>
+                <li class="{{Request::is('account/order/history') ? 'current' : ''}}"><a href="{{ route('order.history') }}">History</a></li>
             </ul>
         </div>
     </div>

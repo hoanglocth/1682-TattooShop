@@ -63,7 +63,7 @@
 								<form action="{{ route('cart.submit') }}" method="post">
 									@csrf
 									<label for="booking_date">Booking Date</label>
-									<input type="datetime" name="booking_date"/>
+									<input type="date" name="booking_date" />
 									<button type="submit">Submit Order</button>
 								</form>
                             </td>

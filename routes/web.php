@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/confirmed', [App\Http\Controllers\OrderController::class, 'confirmed'])->name('order.confirmed');
 		Route::get('/history', [App\Http\Controllers\OrderController::class, 'history'])->name('order.history');
 		Route::delete('/remove',[App\Http\Controllers\OrderController::class, 'remove'])->name('order.remove');
+		Route::get('/detail/{id}', [App\Http\Controllers\OrderController::class, 'detail'])->name('order.detail');
 	}
 	);
 
@@ -90,6 +92,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 	Route::group(['prefix' => 'orders'], function () {
 		Route::get('/', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.order.index');
+		Route::get('/confirm/{id}', [App\Http\Controllers\Admin\OrderController::class, 'confirm'])->name('admin.order.confirm');
+		Route::get('/finish/{id}', [App\Http\Controllers\Admin\OrderController::class, 'finish'])->name('admin.order.finish');
+		Route::get('/cancel/{id}', [App\Http\Controllers\Admin\OrderController::class, 'cancel'])->name('admin.order.cancel');
 	}
 	);
 

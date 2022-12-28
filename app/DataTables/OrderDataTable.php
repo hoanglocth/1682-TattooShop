@@ -8,8 +8,6 @@ use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class OrderDataTable extends DataTable
@@ -23,7 +21,40 @@ class OrderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'order.action')
+            ->addColumn('status', function($row){
+                if($row->status == 1){
+                return 'Waiting';
+                }
+                if($row->status == 2){
+                    return 'Confirm';
+                }
+                if($row->status == 3){
+                    return 'Finish';
+                }
+                if($row->status == 3){
+                    return 'Cancel';
+                }
+            })
+            ->addColumn('action', function($row){
+                $actionBtn = '';
+                if($row->status == 1){
+                    $actionBtn .= '<div class="btn-group" role="group" >                
+                    <a href="'. route('admin.order.confirm', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Confirm</a>
+                    </div>';
+                }
+                if($row->status == 2){
+                    $actionBtn .= '<div class="btn-group" role="group" >                
+                    <a href="'. route('admin.order.finish', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Finish</a>
+                    </div>';
+                }
+                if($row->status != 3){
+                    $actionBtn .= '<div class="btn-group" role="group" >                
+                    <a href="'. route('admin.order.cancel', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Cancel</a>
+                    </div>';
+                }
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -72,12 +103,11 @@ class OrderDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('price'),
-            Column::make('note'),
             Column::make('date_booking'),
             Column::make('user_id'),
-            Column::make('status'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::computed('status'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

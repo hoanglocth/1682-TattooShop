@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -38,5 +39,14 @@ class OrderController extends Controller
 		$order->update(['status' => 4]);
 		$order->save();
 		return redirect()->back()->with(['class' => 'success', 'message' => 'Cancel order id : ' . $request->id. ' success.']);
+	}
+
+	public function detail($id){
+		$order = Order::find($id);
+		if(!$order){
+			return redirect()->back()->with(['class' => 'danger', 'message' => 'something wrong.']);
+		}
+		$detail_order = DetailOrder::where('order_id', '=', $order->id)->get();
+		return view('order.detail', compact('detail_order','order'));
 	}
 }

@@ -69,7 +69,7 @@ class CartController extends Controller
 			
 			DB::beginTransaction();
 			try {
-				$order = DB::table('orders')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now(),'booking_date' => $request->booking_date]);
+				$order = DB::table('orders')->insertGetId(['status' => 1,'price' => $total,'user_id' => \Auth::user()->id,'created_at' => now(),'updated_at' => now(),'date_booking' => $request->booking_date]);
 				foreach($cart as $c){
 					DB::table('detail_orders')->insert(['order_id' => $order,'tattoo_id' => $c["id"],'created_at' => now(),'updated_at' => now()]);
 				}

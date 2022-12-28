@@ -11,7 +11,7 @@
                     <ul class="list-group">
 
                         @foreach ($categories as $category)
-                            <a href="{{ route('category',$category->id ) }}">
+                            <a href="{{ route('category', $category->id) }}">
                                 <li class="list-group-item cat-item">
                                     {{ $category->name }}
                                 </li>
@@ -23,8 +23,7 @@
             </div>
             <div class="col-lg-9 col-sm-12 col-12">
                 <div class="section-intro pb-60px">
-                    <p>Popular tattoo in the market</p>
-                    <h2>Trending <span class="section-intro__style">Product</span></h2>
+                    <h2>Category <span class="section-intro__style">{{ $cate->name }}</span></h2>
                 </div>
                 <div class="row">
                     @foreach ($tattoos as $key => $tattoo)
