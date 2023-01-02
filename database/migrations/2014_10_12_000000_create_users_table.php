@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->integer('roles')->default(0); //0 user | 1 admin
+            $table->integer('gender')->default(0); //0 male | 1 female
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

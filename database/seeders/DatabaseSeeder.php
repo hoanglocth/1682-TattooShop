@@ -23,8 +23,21 @@ class DatabaseSeeder extends Seeder
             'firstname' => "Admin",
             'lastname' => "1",
             'roles' => 1,
+            'gender' => 1,
             'email_verified_at' => now(),
             'password' => bcrypt('admin'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        \App\Models\User::create([
+            'email' => 'hoanglocth@gmail.com',
+            'phone' => 0000000000,
+            'address' => 'Da Nang',
+            'firstname' => "Hoang",
+            'lastname' => "Loc",
+            'roles' => 0,
+            'gender' => 1,
+            'email_verified_at' => now(),
+            'password' => bcrypt('hoangloc123'), // password
             'remember_token' => Str::random(10),
         ]);
         // 
