@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -35,20 +35,4 @@ class HomeController extends Controller
         ]);
     }
 
-    public function category($id)
-    {
-        if($cate = Category::find($id)){
-
-            $categories = Category::all();
-            
-            $tattoos = Tattoo::with('artists')->where('category_id',$cate->id)->orderByDesc('created_at')->take(50)->get();
-    
-            return view('category', [
-                'categories' => $categories,
-                'tattoos' => $tattoos,
-                'cate' => $cate
-            ]);
-        }
-        abort(404);
-    }
 }

@@ -8,23 +8,23 @@ $(document).ready(function(){
 				if(data == 1){
 					let message = new MessageOnTop("Tattoo was added to cart");
 					message.Create(message.CONFIG.SUCCESS_BOOTSTRAP_CLASS);
-					let sd = $(".cartnumber").text().replace(/[^0-9]/gi,'');
+					let sd = $(".nav-shop__circle").text().replace(/[^0-9]/gi,'');
 					var num = parseInt(sd) + 1;
-					$(".cartnumber").text(num);
+					$(".nav-shop__circle").text(num);
 					return;
 				}
 				if(data == -2){
-					let message = new MessageOnTop("Maybe this book was added");
+					let message = new MessageOnTop("Maybe tattoo was added");
 					message.Create(message.CONFIG.DANGER_BOOTSTRAP_CLASS);
 					return;
 				}
 				if(data == -1){
-					let message = new MessageOnTop("This book is not exist");
+					let message = new MessageOnTop("This tattoo is not exist");
 					message.Create(message.CONFIG.ALERT_BOOTSTRAP_CLASS);
 					return;
 				}
 				if(data == -3){
-					let message = new MessageOnTop("Maximum 5 books in once");
+					let message = new MessageOnTop("Maximum 5 tattoo in once");
 					message.Create(message.CONFIG.ALERT_BOOTSTRAP_CLASS);
 					return;
 				}
@@ -46,7 +46,7 @@ MessageOnTop.prototype.CONFIG = {
 	ALERT_BOOTSTRAP_CLASS: "alert-warning",
 	DANGER_BOOTSTRAP_CLASS: "alert-danger",
 	SUCCESS_BOOTSTRAP_CLASS:"alert-success",
-	timeToExist: 2000,
+	timeToExist: 40000,
 	effectTime:500,
 	usingEffect:true
 }

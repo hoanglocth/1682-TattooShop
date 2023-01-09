@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
+Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, 'listTatooPaginate'])->name('category.paginate');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -80,13 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/remove/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'remove'])->name('admin.artist.remove');
 		Route::get('/edit/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'edit'])->name('admin.artist.edit');
 		Route::post('/update/{id}', [App\Http\Controllers\Admin\ArtistController::class, 'update'])->name('admin.artist.update');
-	}
-	);
-
-	Route::group(['prefix' => 'traning-courses'], function () {
-		Route::get('/', [App\Http\Controllers\Admin\TrainingCourseController::class, 'index'])->name('admin.trainingcourse.index');
-		Route::get('/create', [App\Http\Controllers\Admin\TrainingCourseController::class, 'create'])->name('admin.trainingcourse.create');
-		Route::post('/create', [App\Http\Controllers\Admin\TrainingCourseController::class, 'store'])->name('admin.trainingcourse.store');
 	}
 	);
 

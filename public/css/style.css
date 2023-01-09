@@ -8,7 +8,9 @@ body {
     font-weight: 400;
     line-height: 1.667
 }
-
+.fixed-top{
+    z-index: 9999 !important;
+}
 ul {
     list-style-type: none;
     margin: 0;
