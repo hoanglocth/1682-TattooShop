@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
 
     ],
 
@@ -209,6 +210,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

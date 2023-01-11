@@ -35,6 +35,17 @@ class OrderDataTable extends DataTable
                     return 'Cancel';
                 }
             })
+            ->addColumn('payment_status', function($row){
+                if($row->payment_status == 0){
+                return 'Not pay';
+                }
+                if($row->payment_status == 1){
+                    return 'Paid';
+                }
+                if($row->payment_status == 2){
+                    return 'Cash';
+                }
+            })
             ->addColumn('action', function($row){
                 $actionBtn = '';
                 if($row->status == 1){
@@ -108,6 +119,7 @@ class OrderDataTable extends DataTable
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('status'),
+            Column::computed('payment_status'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

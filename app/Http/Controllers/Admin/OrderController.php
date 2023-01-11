@@ -26,8 +26,14 @@ class OrderController extends Controller
     
     public function finish($id){
         if($order = Order::find($id)){
-            if($order->update(['status' => '3'])){
-                return redirect()->back()->with(['class' => 'success', 'message' => 'Confirm success']);
+            if($order['payment_status'] == 0){
+                if($order->update(['status' => '3', 'payment_status' => 2])){
+                    return redirect()->back()->with(['class' => 'success', 'message' => 'Confirm success']);
+                }
+            }else{
+                if($order->update(['status' => '3'])){
+                    return redirect()->back()->with(['class' => 'success', 'message' => 'Confirm success']);
+                }
             }
         }
         return response()->json(['error' => 1, 'message' => 'Not Found']);

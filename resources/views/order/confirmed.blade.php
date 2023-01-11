@@ -13,8 +13,9 @@
                     <li>No data available in here</li>
                 @else
                     <h4>Order number :{{ $order->id }}</h4>
+                    <h4>Payment Status :{{ ($order->payment_status == 0) ? 'Not pay' : 'Paid' }}</h4>
                     <div class="alert alert-success">
-                        <p>Go to tattoo store to f* now!</p>
+                        <p>Go to tattoo store to tatoo now!</p>
                     </div>
                     @php
                         $date = date('Y-m-d H:i:s', strtotime('+24 hours', strtotime($order->updated_at)));
@@ -56,6 +57,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @switch($order->payment_status)
+                        @case(0)
+                            <a href="{{ route('make.payment') }}" class="btn btn-primary mt-3">Pay {{ $order->price }}$ via Paypal</a>
+                            @break
+                    @endswitch
                 @endif
             </div>
         </div>

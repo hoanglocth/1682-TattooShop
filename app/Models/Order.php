@@ -11,7 +11,8 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-    	'status'
+    	'status',
+        'payment_status'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

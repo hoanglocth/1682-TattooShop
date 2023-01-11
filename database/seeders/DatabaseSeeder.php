@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -16,35 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
-            'email' => 'admin@gmail.com',
-            'phone' => 0000000000,
-            'address' => 'Da Nang',
-            'firstname' => "Admin",
-            'lastname' => "1",
-            'roles' => 1,
-            'gender' => 1,
-            'email_verified_at' => now(),
-            'password' => bcrypt('admin'), // password
-            'remember_token' => Str::random(10),
-        ]);
-        \App\Models\User::create([
-            'email' => 'hoanglocth@gmail.com',
-            'phone' => 0000000000,
-            'address' => 'Da Nang',
-            'firstname' => "Hoang",
-            'lastname' => "Loc",
-            'roles' => 0,
-            'gender' => 1,
-            'email_verified_at' => now(),
-            'password' => bcrypt('hoangloc123'), // password
-            'remember_token' => Str::random(10),
-        ]);
-        // 
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->count(3)->make();
     }
 }

@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/detail/{id}', [App\Http\Controllers\OrderController::class, 'detail'])->name('order.detail');
 	}
 	);
+	
+	Route::get('handle-payment', [App\Http\Controllers\PayPalPaymentController::class, 'handlePayment'])->name('make.payment');
+	Route::get('cancel-payment', [App\Http\Controllers\PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
+	Route::get('payment-success', [App\Http\Controllers\PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
 
 });
 
