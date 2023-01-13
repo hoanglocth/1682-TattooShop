@@ -22,6 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
 Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, 'listTatooPaginate'])->name('category.paginate');
 
+Route::get('/tattoo/{id}',[App\Http\Controllers\TattooController::class, 'showTattooDetailByID'])->name('tattoo')->where('id', '[0-9]+');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix' => 'account'], function () {

@@ -34,7 +34,7 @@
                                     <img class="card-img" src="{{ $tattoo->img }}">
                                 </div>
                                 <div class="card-body">
-                                    <p>{{ $tattoo->name }}</p>
+                                    <a href="{{ route('tattoo',$tattoo->id) }}"><b></b>{{$tattoo->name}}</a>
                                     <p>Design by {{ $tattoo->artists->name }}</p>
                                     <p class="card-product__price">{{ $tattoo->price }}</p>
                                 </div>
