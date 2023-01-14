@@ -28,4 +28,8 @@ class Tattoo extends Model
     public function artists(){
         return $this->hasOne(Artist::class, 'id', 'artist_id');
     }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class)->orderBy('created_at','DESC');
+    }
 }

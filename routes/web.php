@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('cancel-payment', [App\Http\Controllers\PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
 	Route::get('payment-success', [App\Http\Controllers\PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
 
+	
+	Route::post('/add_rating',[App\Http\Controllers\RatingController::class, 'rating'])->name('rating.add');
+
 });
 
 Route::group(['prefix' => 'cart'], function () {
