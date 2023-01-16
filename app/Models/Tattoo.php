@@ -13,7 +13,7 @@ class Tattoo extends Model
     protected $table = "tattoos";
 
     protected $fillable = [
-    	'name', 'img','artist','price','describes','category_id', 'artist_id'
+    	'name', 'img','price','describes','category_id', 'artist_id'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

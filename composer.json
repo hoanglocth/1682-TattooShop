@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.1",
+        "srmklive/paypal": "~1.0",
         "yajra/laravel-datatables-buttons": "^9.1",
         "yajra/laravel-datatables-oracle": "^10.2"
     },
@@ -28,7 +29,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/function/function.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

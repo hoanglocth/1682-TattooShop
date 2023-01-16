@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('img');
-            $table->string('artist');
             $table->integer('price')->default(0);
             $table->longText('describes')->nullable();
             $table->bigInteger('category_id')->unsigned();

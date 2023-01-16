@@ -65,19 +65,6 @@
                                 <li class="nav-item {{ Route::currentRouteName() === 'register' ? 'active' : '' }}"><a
                                         class="nav-link" href="{{ route('register') }}">Register</a>
                                 </li>
-                                
-                                <li class="nav-item">
-                                    <a href="{{ route('cart.index') }}">
-
-                                        @if (!session()->get('cart'))
-                                            <button><i class="ti-shopping-cart"></i><span
-                                                    class="nav-shop__circle">0</span></button>
-                                        @else
-                                            <button><i class="ti-shopping-cart"></i><span
-                                                    class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
-                                        @endif
-                                    </a>
-                                </li>
                             @else
                                 @if (Auth::user()->roles == 1)
                                     <li
@@ -110,21 +97,38 @@
                                         <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a href="{{ route('cart.index') }}">
-
-                                            @if (!session()->get('cart'))
-                                                <button><i class="ti-shopping-cart"></i><span
-                                                        class="nav-shop__circle">0</span></button>
-                                            @else
-                                                <button><i class="ti-shopping-cart"></i><span
-                                                        class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
-                                            @endif
-                                        </a>
-                                    </li>
                                 @endif
                             @endif
                         </ul>
+                        @if (!Auth::check())
+                            <ul class="nav-shop">
+                                <li class="nav-item">
+                                    <a href="{{ route('cart.index') }}">
+                                        @if (!session()->get('cart'))
+                                            <button><i class="ti-shopping-cart"></i><span
+                                                    class="nav-shop__circle">0</span></button>
+                                        @else
+                                            <button><i class="ti-shopping-cart"></i><span
+                                                    class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
+                                        @endif
+                                    </a>
+                                </li>
+                            </ul>
+                        @elseif (!Auth::user()->roles == 1)
+                            <ul class="nav-shop">
+                                <li class="nav-item">
+                                    <a href="{{ route('cart.index') }}">
+                                        @if (!session()->get('cart'))
+                                            <button><i class="ti-shopping-cart"></i><span
+                                                    class="nav-shop__circle">0</span></button>
+                                        @else
+                                            <button><i class="ti-shopping-cart"></i><span
+                                                    class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
+                                        @endif
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </nav>

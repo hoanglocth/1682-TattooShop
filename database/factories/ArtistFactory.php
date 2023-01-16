@@ -1,13 +1,25 @@
 <?php
 
-use App\Models\Artist;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(Artist::class, function (Faker $faker) {
-	return[
-		'name' => $faker->name(),
-		'img' => '/images/default.jpg',
-		'published_year' => $faker->year($max = 'now'),
-		'describes' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-	];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ */
+class ArtistFactory extends Factory
+{
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function definition()
+	{
+		return [
+			'name' => $this->faker->name(),
+			'img' => '/images/default.jpg',
+			'describes' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+		];
+	}
+}
