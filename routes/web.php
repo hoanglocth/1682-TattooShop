@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('cancel-payment', [App\Http\Controllers\PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
 	Route::get('payment-success', [App\Http\Controllers\PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
 
-	
+	Route::delete('/delete_rating/',[App\Http\Controllers\RatingController::class, 'destroy'])->name('rating.delete');
 	Route::post('/add_rating',[App\Http\Controllers\RatingController::class, 'rating'])->name('rating.add');
 
 });

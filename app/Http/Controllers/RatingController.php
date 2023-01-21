@@ -25,4 +25,14 @@ class RatingController extends Controller
             return redirect()->back()->with(['class' => 'danger', 'message' => 'Rating error.']);
         }
     }
+
+    public function destroy(Request $request)
+    {
+        $rating = Rating::where('user_id','=',\Auth::user()->id)->where('tattoo_id','=',$request->id)->first();
+        if ($rating->delete()) {
+            return redirect()->back()->with(['class' => 'success', 'message' => 'Delete success']);
+        }else{
+            return redirect()->back()->with(['class' => 'danger', 'message' => 'Rating error.']);
+        }
+    }
 }
