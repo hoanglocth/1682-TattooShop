@@ -24,6 +24,9 @@ Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, '
 
 Route::get('/tattoo/{id}',[App\Http\Controllers\TattooController::class, 'showTattooDetailByID'])->name('tattoo')->where('id', '[0-9]+');
 
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix' => 'account'], function () {
 		Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('account.index');
