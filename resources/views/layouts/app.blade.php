@@ -74,6 +74,11 @@
                                     </li>
                                     @if (str_contains(Request::fullUrl(), 'admin'))
                                         <li
+                                            class="nav-item {{ Route::currentRouteName() === 'admin.user.index' ? 'active' : '' }}">
+                                            <a class="nav-link"
+                                                href="{{ route('admin.user.index') }}">Users</a>
+                                        </li>
+                                        <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.category.index' ? 'active' : '' }}">
                                             <a class="nav-link"
                                                 href="{{ route('admin.category.index') }}">Categories</a>

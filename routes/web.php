@@ -103,4 +103,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	}
 	);
 
+	Route::group(['prefix' => 'users'], function () {
+		Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.user.index');
+	}
+	);
+
 });

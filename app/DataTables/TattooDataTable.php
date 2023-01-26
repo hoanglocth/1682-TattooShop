@@ -23,23 +23,23 @@ class TattooDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('image', function($row){
-                return '<img src="/'.$row->img.'" alt="">';
+            ->addColumn('img', function ($image) {
+                return '<img src=' . $image->img . ' border="0" width="100" class="img-rounded" align="center" />';
             })
-            ->addColumn('action', function($row){
+            ->addColumn('action', function ($row) {
                 $actionBtn = '<div class="btn-group" role="group" >                
-                <a href="'. route('admin.tattoo.edit', $row->id) .'" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
-                <a href="'. route('admin.tattoo.remove', $row->id) .'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
+                <a href="' . route('admin.tattoo.edit', $row->id) . '" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                <a href="' . route('admin.tattoo.remove', $row->id) . '" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
                 </div>';
                 return $actionBtn;
             })
-            ->addColumn('category', function($row){
+            ->addColumn('category', function ($row) {
                 return $row->category->name;
             })
-            ->addColumn('artist', function($row){
+            ->addColumn('artist', function ($row) {
                 return $row->artists->name;
             })
-            ->rawColumns(['action','image'])
+            ->rawColumns(['action', 'img'])
             ->setRowId('id');
     }
 
@@ -62,20 +62,20 @@ class TattooDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('tattoo-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('tattoo-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class TattooDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('image'),
+            Column::make('img'),
             Column::make('name'),
             Column::make('price'),
             Column::make('describes'),
@@ -96,10 +96,10 @@ class TattooDataTable extends DataTable
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

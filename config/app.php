@@ -181,7 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -210,8 +210,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
     ])->toArray(),
 
 ];

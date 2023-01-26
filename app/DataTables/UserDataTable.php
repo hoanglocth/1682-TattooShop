@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Artist;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ArtistDataTable extends DataTable
+class UserDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -23,27 +23,24 @@ class ArtistDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('img', function ($image) {
-                return '<img src=' . $image->img . ' border="0" width="100" class="img-rounded" align="center" />';
+            ->addColumn('gender', function ($gender) {
+                if ($gender->gender == 0) {
+                    return 'Male';
+                }
+                if ($gender->gender == 1) {
+                    return 'Female';
+                }
             })
-            ->addColumn('action', function ($row) {
-                $actionBtn = '<div class="btn-group" role="group" >
-                <a href="' . route('admin.artist.edit', $row->id) . '" class="edit btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>     
-                <a href="' . route('admin.artist.remove', $row->id) . '" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
-                </div>';
-                return $actionBtn;
-            })
-            ->rawColumns(['action', 'img'])
             ->setRowId('id');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Artist $model
+     * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Artist $model): QueryBuilder
+    public function query(User $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -56,7 +53,7 @@ class ArtistDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('artist-table')
+            ->setTableId('user-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -80,17 +77,13 @@ class ArtistDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+
             Column::make('id'),
-            Column::make('img'),
-            Column::make('name'),
-            Column::make('describes'),
+            Column::make('email'),
+            Column::make('phone'),
+            Column::make('address'),
+            Column::make('gender'),
             Column::make('created_at'),
-            Column::make('updated_at'),
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
         ];
     }
 
@@ -101,6 +94,6 @@ class ArtistDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Artist_' . date('YmdHis');
+        return 'User_' . date('YmdHis');
     }
 }

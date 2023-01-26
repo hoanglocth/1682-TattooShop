@@ -4,8 +4,25 @@
 // Variables
 @import 'variables';
 
+// // Bootstrap
+// @import 'bootstrap/scss/bootstrap';
+// @import 'bootstrap-icons/font/bootstrap-icons.css';
+// // // Datatables
+// @import 'datatables.net-bs4/css/dataTables.bootstrap4.css';
+// @import 'datatables.net-responsive-bs4/css/responsive.bootstrap4.css';
+// @import "datatables.net-buttons-bs4/css/buttons.bootstrap4.css";
+
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+ 
+// Variables
+@import 'variables';
+ 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
-// // Datatables
-@import 'datatables.net-bs4/css/dataTables.bootstrap4.css';
-@import 'datatables.net-responsive-bs4/css/responsive.bootstrap4.css';
+ 
+// DataTables
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+@import 'datatables.net-select-bs5/css/select.bootstrap5.css';

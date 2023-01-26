@@ -5,6 +5,7 @@
  */
 
 import './bootstrap';
+import 'laravel-datatables-vite';
 import { createApp } from 'vue';
 
 /**
@@ -37,3 +38,5 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+
+
