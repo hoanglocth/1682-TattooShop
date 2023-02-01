@@ -17,7 +17,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="/js/main.js"></script>
 
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
     <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
@@ -57,8 +56,10 @@
                     </button>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"><a
-                                    class="nav-link" href="{{ route('home') }}">Home</a></li>
+                            @if (!Auth::check() or Auth::user()->roles == 0)
+                                <li class="nav-item {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"><a
+                                        class="nav-link" href="{{ route('home') }}">Home</a></li>
+                            @endif
                             @if (!Auth::check())
                                 <li class="nav-item {{ Route::currentRouteName() === 'login' ? 'active' : '' }}"><a
                                         class="nav-link" href="{{ route('login') }}">Login</a></li>
@@ -75,8 +76,7 @@
                                     @if (str_contains(Request::fullUrl(), 'admin'))
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.user.index' ? 'active' : '' }}">
-                                            <a class="nav-link"
-                                                href="{{ route('admin.user.index') }}">Users</a>
+                                            <a class="nav-link" href="{{ route('admin.user.index') }}">Users</a>
                                         </li>
                                         <li
                                             class="nav-item {{ Route::currentRouteName() === 'admin.category.index' ? 'active' : '' }}">
@@ -97,15 +97,11 @@
                                         </li>
                                     @endif
                                 @else
-                                    <li
-                                        class="nav-item {{ Route::currentRouteName() === 'account.index' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('account.index') }}">Profile</a>
-                                    </li>
 
                                 @endif
                             @endif
                         </ul>
-                        @if (!Auth::check())
+                        @if (!Auth::check() or Auth::user()->roles == 0)
                             <ul class="nav-shop">
                                 <li class="nav-item">
                                     <a href="{{ route('cart.index') }}">
@@ -119,19 +115,31 @@
                                     </a>
                                 </li>
                             </ul>
-                        @elseif (!Auth::user()->roles == 1)
-                            <ul class="nav-shop">
-                                <li class="nav-item">
-                                    <a href="{{ route('cart.index') }}">
-                                        @if (!session()->get('cart'))
-                                            <button><i class="ti-shopping-cart"></i><span
-                                                    class="nav-shop__circle">0</span></button>
-                                        @else
-                                            <button><i class="ti-shopping-cart"></i><span
-                                                    class="nav-shop__circle">{{ count(session()->get('cart')) }}</span></button>
-                                        @endif
-                                    </a>
-                                </li>
+                        @endif
+                        @if (Auth::check())
+                            <ul>
+                                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                                    <ul class="nav navbar-nav menu_nav ml-4 mr-auto">
+                                        <li class="nav-item submenu dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                                    class="rounded-circle" height="25"
+                                                    alt="Black and White Portrait of a Man" loading="lazy" />
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @if (Auth::user()->roles == 0)
+                                                    <li class="nav-item"><a class="nav-link"
+                                                            href={{ route('account.index') }}>Profile</a>
+                                                    </li>
+                                                @endif
+                                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{ route('logout') }}">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </ul>
                         @endif
                     </div>

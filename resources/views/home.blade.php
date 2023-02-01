@@ -11,7 +11,7 @@
                     <ul class="list-group">
 
                         @foreach ($categories as $category)
-                            <a href="{{ route('category',$category->id ) }}">
+                            <a href="{{ route('category', $category->id) }}">
                                 <li class="list-group-item cat-item">
                                     {{ $category->name }}
                                 </li>
@@ -28,20 +28,21 @@
                 </div>
                 <div class="row">
                     @foreach ($tattoos as $key => $tattoo)
-                        <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card text-center card-product">
                                 <div class="card-product__img">
-                                    <img class="card-img" src="{{ $tattoo->img }}">
+                                    <a href="{{ route('tattoo', $tattoo->id) }}"><img class="card-img" src="{{ $tattoo->img }}" alt=""></a>
+                                    
+                                    <ul class="card-product__imgOverlay">
+                                        <li><button class="get-tattoo-btt" data-tattoo-id="{{ $tattoo->id }}"><i class="ti-shopping-cart"></i></button></li>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{ route('tattoo',$tattoo->id) }}"><b></b>{{$tattoo->name}}</a>
                                     <p>Design by {{ $tattoo->artists->name }}</p>
-                                    <p class="card-product__price">{{ $tattoo->price }}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="get-tattoo-btt" data-tattoo-id="{{ $tattoo->id }}">
-                                        Add to card
-                                    </button>
+                                    <h4 class="card-product__title"><a
+                                            href="{{ route('tattoo', $tattoo->id) }}">{{ $tattoo->name }}</a></h4>
+                                    <p class="card-product__price">${{ $tattoo->price }}</p>
                                 </div>
                             </div>
                         </div>

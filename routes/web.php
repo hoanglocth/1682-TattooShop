@@ -26,7 +26,7 @@ Route::get('/tattoo/{id}',[App\Http\Controllers\TattooController::class, 'showTa
 
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
-
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix' => 'account'], function () {
 		Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('account.index');
@@ -63,8 +63,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 	Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.index');
-
-
+	
 	Route::group(['prefix' => 'categories'], function () {
 		Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.category.index');
 		Route::get('/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.category.create');

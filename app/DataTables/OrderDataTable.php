@@ -21,51 +21,57 @@ class OrderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('status', function($row){
-                if($row->status == 1){
-                return 'Waiting';
+            ->editColumn('price', function ($row) {
+                return "$" . $row->price;
+            })
+            ->addColumn('status', function ($row) {
+                if ($row->status == 1) {
+                    return 'Waiting';
                 }
-                if($row->status == 2){
+                if ($row->status == 2) {
                     return 'Confirm';
                 }
-                if($row->status == 3){
+                if ($row->status == 3) {
                     return 'Finish';
                 }
-                if($row->status == 3){
+                if ($row->status == 4) {
                     return 'Cancel';
                 }
             })
-            ->addColumn('payment_status', function($row){
-                if($row->payment_status == 0){
-                return 'Not pay';
+            ->addColumn('payment_status', function ($row) {
+                if ($row->payment_status == 0) {
+                    return 'Not pay';
                 }
-                if($row->payment_status == 1){
-                    return 'Paid';
+                if ($row->payment_status == 1) {
+                    return 'Paypal paid';
                 }
-                if($row->payment_status == 2){
-                    return 'Cash';
+                if ($row->payment_status == 2) {
+                    return 'Money cash';
                 }
             })
-            ->addColumn('action', function($row){
+            ->addColumn('user', function ($row) {
+                return $row->user->email;
+            })
+            ->addColumn('action', function ($row) {
                 $actionBtn = '';
-                if($row->status == 1){
+                if ($row->status == 1) {
                     $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="'. route('admin.order.confirm', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Confirm</a>
+                    <a href="' . route('admin.order.confirm', $row->id) . '" class="my-1 btn btn-primary btn-sm mr-1">Confirm</a>
                     </div>';
                 }
-                if($row->status == 2){
+                if ($row->status == 2) {
                     $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="'. route('admin.order.finish', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Finish</a>
+                    <a href="' . route('admin.order.finish', $row->id) . '" class="my-1 btn btn-success btn-sm mr-1">Finish</a>
                     </div>';
                 }
-                if($row->status != 3){
+                if ($row->status != 3 && $row->status != 4) {
                     $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="'. route('admin.order.cancel', $row->id) .'" class="edit btn btn-primary btn-sm mr-1">Cancel</a>
+                    <a href="' . route('admin.order.cancel', $row->id) . '" class="my-1 btn btn-danger btn-sm mr-1">Cancel</a>
                     </div>';
                 }
                 return $actionBtn;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'price'])
             ->setRowId('id');
     }
 
@@ -88,20 +94,20 @@ class OrderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('order-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('order-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -115,16 +121,16 @@ class OrderDataTable extends DataTable
             Column::make('id'),
             Column::make('price'),
             Column::make('date_booking'),
-            Column::make('user_id'),
+            Column::make('user'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('status'),
             Column::computed('payment_status'),
             Column::computed('action')
-            ->exportable(false)
-            ->printable(false)
-            ->width(60)
-            ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
