@@ -24,9 +24,19 @@ Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, '
 
 Route::get('/tattoo/{id}',[App\Http\Controllers\TattooController::class, 'showTattooDetailByID'])->name('tattoo')->where('id', '[0-9]+');
 
+Route::get('/tattoo', [App\Http\Controllers\TattooController::class, 'index'])->name('tattoo.index');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+Route::get('/search/name', [App\Http\Controllers\SearchController::class, 'search.name']);
+Route::get('/search',  [App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
+Route::post('/search/ajax',  [App\Http\Controllers\SearchController::class, 'searchAjax'])->name('search.ajax');
+
+
+Route::get('/artist',  [App\Http\Controllers\ArtistController::class, 'index'])->name('artist.index');
+Route::get('/artist/{id}',  [App\Http\Controllers\ArtistController::class, 'detail'])->name('artist.detail');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['prefix' => 'account'], function () {
 		Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('account.index');
@@ -99,6 +109,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 		Route::get('/confirm/{id}', [App\Http\Controllers\Admin\OrderController::class, 'confirm'])->name('admin.order.confirm');
 		Route::get('/finish/{id}', [App\Http\Controllers\Admin\OrderController::class, 'finish'])->name('admin.order.finish');
 		Route::get('/cancel/{id}', [App\Http\Controllers\Admin\OrderController::class, 'cancel'])->name('admin.order.cancel');
+		Route::get('/{id}', [App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('admin.order.detail');
+	}
+	);
+
+	Route::group(['prefix' => 'feedbacks'], function () {
+		Route::get('/', [App\Http\Controllers\Admin\ContactUsController::class, 'index'])->name('admin.contactus.index');
+		Route::get('/remove/{id}', [App\Http\Controllers\Admin\ContactUsController::class, 'remove'])->name('admin.contactus.remove');
 	}
 	);
 

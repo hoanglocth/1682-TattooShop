@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Rating;
 use App\Models\Tattoo;
 use Illuminate\Http\Request;
 
 class TattooController extends Controller
 {
-    
+    public function index(Request $request)
+    {
+        $categories= Category::whereHas('tattoos', function($query) {
+            $query->where('name' ,'!=' ,null  );
+        }, '>', 0)->get();
+		$paginate = isset($request->paginate) ? $request->paginate : 12;
+        $tattoos = Tattoo::with('artists')->orderByDesc('created_at')->paginate($paginate);
+
+        return view('tattoo.index', [
+            'categories' => $categories,
+            'tattoos' => $tattoos
+        ]);
+    }
 	public function showTattooDetailByID($id,Request $request)
 	{
 		$data = Tattoo::find($id);

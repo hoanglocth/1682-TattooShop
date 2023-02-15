@@ -46,7 +46,7 @@ MessageOnTop.prototype.CONFIG = {
 	ALERT_BOOTSTRAP_CLASS: "alert-warning",
 	DANGER_BOOTSTRAP_CLASS: "alert-danger",
 	SUCCESS_BOOTSTRAP_CLASS:"alert-success",
-	timeToExist: 40000,
+	timeToExist: 3000,
 	effectTime:500,
 	usingEffect:true
 }

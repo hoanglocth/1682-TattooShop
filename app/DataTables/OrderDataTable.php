@@ -21,6 +21,9 @@ class OrderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addColumn('user', function ($row) {
+                return $row->user->email;
+            })
             ->editColumn('price', function ($row) {
                 return "$" . $row->price;
             })
@@ -49,26 +52,20 @@ class OrderDataTable extends DataTable
                     return 'Money cash';
                 }
             })
-            ->addColumn('user', function ($row) {
-                return $row->user->email;
-            })
             ->addColumn('action', function ($row) {
-                $actionBtn = '';
+                $actionBtn = '<div class="btn-group" role="group" >';
+                $actionBtn .= '<a href="' . route('admin.order.detail', $row->id) . '" class="my-1 btn btn-primary btn-sm mr-1">View</a>';
                 if ($row->status == 1) {
-                    $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="' . route('admin.order.confirm', $row->id) . '" class="my-1 btn btn-primary btn-sm mr-1">Confirm</a>
-                    </div>';
+                    $actionBtn .= '<a href="' . route('admin.order.confirm', $row->id) . '" class="my-1 btn btn-primary btn-sm mr-1">Confirm</a>';
                 }
                 if ($row->status == 2) {
-                    $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="' . route('admin.order.finish', $row->id) . '" class="my-1 btn btn-success btn-sm mr-1">Finish</a>
-                    </div>';
+                    $actionBtn .= '<a href="' . route('admin.order.finish', $row->id) . '" class="my-1 btn btn-success btn-sm mr-1">Finish</a>';
                 }
                 if ($row->status != 3 && $row->status != 4) {
-                    $actionBtn .= '<div class="btn-group" role="group" >                
-                    <a href="' . route('admin.order.cancel', $row->id) . '" class="my-1 btn btn-danger btn-sm mr-1">Cancel</a>
-                    </div>';
+                    $actionBtn .= '<a href="' . route('admin.order.cancel', $row->id) . '" class="my-1 btn btn-danger btn-sm mr-1">Cancel</a>';
                 }
+                $actionBtn .= '</div>';
+
                 return $actionBtn;
             })
             ->rawColumns(['action', 'price'])
@@ -119,9 +116,9 @@ class OrderDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('price'),
-            Column::make('date_booking'),
             Column::make('user'),
+            Column::make('date_booking'),
+            Column::make('price'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('status'),

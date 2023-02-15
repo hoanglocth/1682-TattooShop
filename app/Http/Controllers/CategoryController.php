@@ -11,13 +11,15 @@ class CategoryController extends Controller
     
     public function index($category_id,Request $request)
     {
-        $cate = Category::find($category_id);
 
+        $cate= Category::find($category_id);
         if(!$cate) abort(404);
 
-        $categories= Category::all();
+        $categories= Category::whereHas('tattoos', function($query) {
+            $query->where('name' ,'!=' ,null  );
+        }, '>', 0)->get();
 
-        $paginate = isset($request->paginate) ? $request->paginate : 12;
+        $paginate = isset($request->paginate) ? $request->paginate : 9;
         
         $orderby= isset($request->orderby) ? $request->orderby: 0;
 

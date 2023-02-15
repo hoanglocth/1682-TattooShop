@@ -17,7 +17,7 @@ class PayPalPaymentController extends Controller
             return redirect()->route('order.confirmed');
         }
         $product = [];
-        $product['invoice_id'] = (int)$order['id'];
+        $product['invoice_id'] = (int)$order['id']+"99";
         $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
 
         $product['items'] = [

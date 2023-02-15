@@ -22,7 +22,7 @@ class TattooFactory extends Factory
 		$idCat = Category::pluck('id');
 		$idArt = Artist::pluck('id');
 		return [
-			'name' => $this->faker->words($nb = 3, $asText = false),
+			'name' => $this->faker->unique()->words(3, true),
 			'img' => '/images/default.jpg',
 			'describes' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
 			'price' => $this->faker->numberBetween($min = 20, $max = 5000),

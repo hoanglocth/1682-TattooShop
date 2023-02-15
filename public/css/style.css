@@ -8,11 +8,9 @@ body {
     font-weight: 400;
     line-height: 1.667
 }
-
-.fixed-top {
+.fixed-top{
     z-index: 9999 !important;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -114,12 +112,12 @@ a {
 }
 
 .section-margin--small {
-    margin: 10px 0
+    margin: 30px 0
 }
 
 @media (min-width: 1000px) {
     .section-margin--small {
-        margin: 5px 0
+        margin: 30px 0
     }
 }
 
@@ -435,14 +433,14 @@ a {
     color: #fff
 }
 
-.nav-shop li button {
+.button-cart {
     padding: 0;
     border: 0;
     background: transparent;
     position: relative
 }
 
-.nav-shop li button .nav-shop__circle {
+.button-cart .nav-shop__circle {
     font-size: 9px;
     display: inline-block;
     background: #384aeb;
@@ -454,9 +452,6 @@ a {
     right: -12px
 }
 
-.nav-shop li:last-child {
-    margin-left: 40px
-}
 
 @media (max-width: 1619px) {
     .header_area .navbar .search {
@@ -774,7 +769,8 @@ a {
 .hero-banner {
     background: #F1F6F7;
     position: relative;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    margin-top: -30px;
 }
 
 @media (min-width: 991px) {
@@ -1110,12 +1106,11 @@ a {
 .card-blog__info li:not(:last-child) {
     margin-right: 20px
 }
-
-.user-avatar-comment {
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
+.user-avatar-comment{
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	object-fit: cover;
 }
 
 .card-blog__title {
@@ -1317,9 +1312,8 @@ a {
 }
 
 .button-header {
-    padding: 10px 45px;
+    padding: 10px 10px;
     background: transparent;
-    color: #222;
     border-color: #EEEEEE
 }
 
@@ -1346,7 +1340,7 @@ a {
 .button:hover {
     border-color: #384aeb;
     background: transparent;
-    color: #222
+    color: #fff
 }
 
 .button-register {
@@ -2547,7 +2541,7 @@ a {
 }
 
 .filter-bar-search {
-    margin-top: 10px
+    margin: 0px 10px;
 }
 
 .filter-bar-search input {
@@ -2555,6 +2549,7 @@ a {
     font-size: 14px;
     color: #999999;
     height: 38px;
+    max-width: 6vw;
     padding-left: 15px
 }
 
@@ -4237,14 +4232,6 @@ a {
     margin-left: -395px
 }
 
-.bg-custom-1 {
-    background-color: #85144b;
-}
-
-.bg-custom-2 {
-    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-}
-
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner .primary-btn {
     height: 40px;
     padding: 0px 44px;
@@ -4868,3 +4855,4 @@ a {
 .dataTables_length {
     display: inline-block;
 }
+

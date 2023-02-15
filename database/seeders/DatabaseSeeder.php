@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        /*User::create([
             'email' => "admin@gmail.com",
             'email_verified_at' => now(),
             'gender' => 1,
@@ -31,10 +31,10 @@ class DatabaseSeeder extends Seeder
             'phone' => "0987654321",
             'firstname' => "Admin",
             'lastname' => "account"
-        ]);
+        ]);*/
         User::factory(10)->create();
         Category::factory(10)->create();
         Artist::factory(5)->create();
-        Tattoo::factory(1)->create();
+        Tattoo::factory(1000)->create();
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Tattoo;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -25,13 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $tattoos = Tattoo::with('artists')->orderByDesc('created_at')->take(8)->get();
 
-        $tattoos = Tattoo::with('artists')->orderByDesc('created_at')->take(50)->get();
+        $top_tattoos = Tattoo::withCount([
+            'ratings as average_rating' => function ($query) {
+                $query->select(\DB::raw('coalesce(avg(star_number),0)'));
+            }
+        ])->orderByDesc('average_rating')->take(8)->get();
 
         return view('home', [
-            'categories' => $categories,
-            'tattoos' => $tattoos
+            'tattoos' => $tattoos,
+            'top_tattoos' => $top_tattoos
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\OrderDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -47,5 +48,14 @@ class OrderController extends Controller
             }
         }
         return response()->json(['error' => 1, 'message' => 'Not Found']);
+    }
+
+    public function detail($id){
+		$order = Order::find($id);
+		if(!$order){
+			return redirect()->back()->with(['class' => 'danger', 'message' => 'something wrong.']);
+		}
+		$detail_order = DetailOrder::where('order_id', '=', $order->id)->get();
+		return view('admin.order.detail', compact('detail_order','order'));
     }
 }

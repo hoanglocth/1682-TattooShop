@@ -57,7 +57,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-9 col-sm-12 col-12">
+            <div class="col-xl-9 col-lg-8 col-md-7">
                 <div class="section-intro pb-60px">
                     <h2>Category <span class="section-intro__style">{{ $cate->name }}</span></h2>
                 </div>
