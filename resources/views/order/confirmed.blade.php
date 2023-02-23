@@ -52,7 +52,7 @@
                                     </td>
                                     <td><a href="">{{ $orderdetails->tattoo->category->name }}</a>
                                     </td>
-                                    <td class="text-center">{{ number_format($orderdetails->tattoo->price) }} VND</td>
+                                    <td class="text-center">$ {{ number_format($orderdetails->tattoo->price) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

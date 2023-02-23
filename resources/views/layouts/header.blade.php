@@ -71,12 +71,12 @@
                         <ul class="nav-shop">
                             <li class="nav-item">
                                 <form class="input-group filter-bar-search" action="{{ route('search.index') }}"
-                                method="get">
-                                <input type="text" name="keysearch" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button type="submit"><i class="ti-search"></i></button>
-                                </div>
-                            </form>
+                                    method="get">
+                                    <input type="text" name="keysearch" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit"><i class="ti-search"></i></button>
+                                    </div>
+                                </form>
                             </li>
 
                             <li class="nav-item">
@@ -91,8 +91,10 @@
                                 </a>
                             </li>
                             @if (!Auth::check())
-                                <li class="nav-item"><a class="button button-header" href="{{ route('login') }}">Login</a></li>
-                                <li class="nav-item"><a class="button button-header" href="{{ route('register') }}">Register</a></li>
+                                <li class="nav-item"><a class="button button-header"
+                                        href="{{ route('login') }}">Login</a></li>
+                                <li class="nav-item"><a class="button button-header"
+                                        href="{{ route('register') }}">Register</a></li>
                             @endif
                         </ul>
                     @endif

@@ -21,6 +21,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('in
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
 Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, 'listTatooPaginate'])->name('category.paginate');
+Route::post('/tattoo', [App\Http\Controllers\TattooController::class, 'listTatooPaginate'])->name('tattoo.index.paginate');
 
 Route::get('/tattoo/{id}',[App\Http\Controllers\TattooController::class, 'showTattooDetailByID'])->name('tattoo')->where('id', '[0-9]+');
 
@@ -55,8 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
 	);
 	
 	Route::get('handle-payment', [App\Http\Controllers\PayPalPaymentController::class, 'handlePayment'])->name('make.payment');
-	Route::get('cancel-payment', [App\Http\Controllers\PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
-	Route::get('payment-success', [App\Http\Controllers\PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
+	Route::get('cancel-payment', [App\Http\Controllers\PayPalPaymentController::class, 'paymentCancel'])->name('payment.cancel');
+	Route::get('payment-success', [App\Http\Controllers\PayPalPaymentController::class, 'paymentSuccess'])->name('payment.success');
 
 	Route::delete('/delete_rating/',[App\Http\Controllers\RatingController::class, 'destroy'])->name('rating.delete');
 	Route::post('/add_rating',[App\Http\Controllers\RatingController::class, 'rating'])->name('rating.add');

@@ -156,9 +156,9 @@ return [
 
     'providers' => [
 
-        /*
-         * Laravel Framework Service Providers...
-         */
+            /*
+             * Laravel Framework Service Providers...
+             */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -182,16 +182,16 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        /*
-         * Package Service Providers...
-         */
+            /*
+             * Package Service Providers...
+             */
 
-        /*
-         * Application Service Providers...
-         */
+            /*
+             * Application Service Providers...
+             */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+            // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class
@@ -210,7 +210,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Datatables' => yajra\Datatables\Datatables::class,
     ])->toArray(),

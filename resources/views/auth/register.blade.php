@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="login_form_inner">
+                    <div class="register_form_inner">
                         <h3>Create an account</h3>
                         @if ($errors->any())
                             <div class="alert alert-danger login_form mb-5">
@@ -44,7 +44,7 @@
                                     placeholder="Confirm Password" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Confirm Password'">
                             </div>
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <input type="text"
                                     class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}"
                                     name="firstname"
@@ -52,7 +52,7 @@
                                     placeholder="First Name" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'First Name'">
                             </div>
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <input type="text"
                                     class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname"
                                     value="{{ isset($data->lastname) ? $data->lastname : old('lastname') }}"

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class ArtistFactory extends Factory
 	{
 		return [
 			'name' => $this->faker->name(),
-			'img' => '/images/default.jpg',
+			'img' => '/images/default-artist.jpg',
 			'describes' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
 		];
 	}
