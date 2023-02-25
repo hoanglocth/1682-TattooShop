@@ -16,7 +16,7 @@ class SearchController extends Controller
         }, '>', 0)->get();
         $category_id = (isset($request->category)) ? $request->category : -1;
         $orderby = (isset($request->orderby)) ? $request->orderby : 0;
-        $paginate = (isset($request->paginate)) ? $request->paginate : 10;
+        $paginate = (isset($request->paginate)) ? $request->paginate : 9;
         if ($request->keysearch == null) {
             return view('search', [
                 'categories' => $cate,

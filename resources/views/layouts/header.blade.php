@@ -3,7 +3,10 @@
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="/images/logo.png" alt=""></a>
+                @if (!Auth::check() or Auth::user()->roles == 0)
+                    <a class="navbar-brand logo_h" href="{{ route('home') }}"><img src="/images/logo.png"
+                            alt=""></a>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
@@ -59,15 +62,6 @@
                         @endif
                     </ul>
                     @if (!Auth::check() or Auth::user()->roles == 0)
-                        {{-- <ul class="nav-shop">
-                            <form class="input-group filter-bar-search" action="{{ route('search.index') }}"
-                                method="get">
-                                <input type="text" name="keysearch" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button type="submit"><i class="ti-search"></i></button>
-                                </div>
-                            </form>
-                        </ul> --}}
                         <ul class="nav-shop">
                             <li class="nav-item">
                                 <form class="input-group filter-bar-search" action="{{ route('search.index') }}"
@@ -90,6 +84,9 @@
                                     @endif
                                 </a>
                             </li>
+
+                        </ul>
+                        <ul class="nav-shop">
                             @if (!Auth::check())
                                 <li class="nav-item"><a class="button button-header"
                                         href="{{ route('login') }}">Login</a></li>

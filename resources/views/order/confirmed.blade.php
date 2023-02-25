@@ -13,7 +13,7 @@
                     <li>No data available in here</li>
                 @else
                     <h4>Order number :{{ $order->id }}</h4>
-                    <h4>Payment Status :{{ ($order->payment_status == 0) ? 'Not pay' : 'Paid' }}</h4>
+                    <h4>Payment Status :{{ $order->payment_status == 0 ? 'Not pay' : 'Paid' }}</h4>
                     <div class="alert alert-success">
                         <p>Go to tattoo store to tatoo now!</p>
                     </div>
@@ -27,7 +27,7 @@
                     @else
                         <div id="DateCountdown" data-date="{{ $date }}" style="width: 100%;"></div>
                     @endif
-                    <table id="cart" class="table table-hover table-condensed">
+                    <table id="cart" class="table">
                         <thead>
                             <tr>
                                 <th style="width:60%">Tattoo</th>
@@ -39,29 +39,44 @@
                             @foreach ($data as $orderdetails)
                                 <tr>
                                     <td>
-                                        <div class="row">
-                                            <div class="col-sm-2 hidden-xs"><img src="{{ $orderdetails->tattoo->img }}"
-                                                    alt="..." class="img-responsive" height="100px" width="70px" />
+                                        <div class="media">
+                                            <div class="d-flex"><img src="{{ $orderdetails->tattoo->img }}" alt="..."
+                                                    class="center-cropped" style="width: 6em; height:6em" />
                                             </div>
-                                            <div class="col-sm-10">
-                                                <h4><a class="nomargin" href="">{{ $orderdetails->tattoo->name }}</a>
+                                            <div class="media-body">
+                                                <h4><a class="nomargin" href="{{ route('tattoo', $orderdetails->tattoo->id) }}">{{ $orderdetails->tattoo->name }}</a>
                                                 </h4>
                                                 <p>Describes : {{ substr($orderdetails->tattoo->describes, 0, 90) }} ...</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><a href="">{{ $orderdetails->tattoo->category->name }}</a>
+                                    <td><a
+                                            href="{{ route('category', $orderdetails->tattoo->category->id) }}">{{ $orderdetails->tattoo->category->name }}</a>
                                     </td>
-                                    <td class="text-center">$ {{ number_format($orderdetails->tattoo->price) }}</td>
+                                    <td class="text-center">${{ number_format($orderdetails->tattoo->price) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td style="font-weight: bold">Total :</td>
+                                <td class="text-center">${{ number_format($order->price) }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>
+                                    @switch($order->payment_status)
+                                        @case(0)
+                                            <a href="{{ route('make.payment') }}" class="btn btn-primary mt-3">Pay
+                                                {{ $order->price }}$ via
+                                                Paypal</a>
+                                        @break
+                                    @endswitch
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
-                    @switch($order->payment_status)
-                        @case(0)
-                            <a href="{{ route('make.payment') }}" class="btn btn-primary mt-3">Pay {{ $order->price }}$ via Paypal</a>
-                            @break
-                    @endswitch
                 @endif
             </div>
         </div>

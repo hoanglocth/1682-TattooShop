@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
                 <div class="sidebar-categories">
-                    <div class="head">Category {{ $cate->name }}</div>
+                    <div class="head">Browse Categories</div>
                     <ul class="main-categories">
                         <li class="common-filter">
                             <form action="#">

@@ -5,7 +5,8 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="row" id="product-container">
+    <section class="lattest-product-area pb-40 category-list">
+    <div class="row"  style="margin-top: 30px" id="product-container">
         @foreach ($data as $tattoo)
             <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
@@ -29,7 +30,8 @@
             </div>
         @endforeach
     </div>
-    <hr>
+    </section>
+
     <div style="width: 100%;" class="d-flex justify-content-center">
         {!! $data->appends(['orderby' => $orderby, 'category' => $category, 'keysearch' => $key, 'paginate' => $paginate])->links('vendor.pagination.bootstrap-4') !!}
     </div>
@@ -41,3 +43,33 @@
         </button>
     </div>
 @endif
+
+@section('custom-js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("form#options").submit(function(event) {
+                event.preventDefault();
+                let orderby = $("select#orderby-select").val();
+                let paginate = $("select#pagination-select").val();
+                let categoryId = $(this).attr("data-category-id");
+                let token = $("meta[name='csrf-token']").attr("content");
+                $.ajax({
+                    type: 'POST',
+                    url: '/category/' + categoryId,
+                    data: {
+                        'category': categoryId,
+                        'pagination': paginate,
+                        'orderby': orderby,
+                        '_token': token
+                    },
+                    success: function(data) {
+                        $("#paginate").empty().append($(data).hide().fadeIn(500));
+                    },
+                    error: function(jqXHR, exception) {
+                        console.log(jqXHR.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+@endsection

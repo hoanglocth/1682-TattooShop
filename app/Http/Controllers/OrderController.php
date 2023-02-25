@@ -27,7 +27,7 @@ class OrderController extends Controller
 	}
 
     public function history(){ //3 finish, 4 cancel
-		$orders = Order::wherein('status', [3,4])->orderBy('updated_at','DESC')->get();
+		$orders = Order::wherein('status', [3,4])->where('user_id','=',\Auth::user()->id)->orderBy('updated_at','DESC')->get();
 		return view('order.history',['orders' => $orders]);
     }
 

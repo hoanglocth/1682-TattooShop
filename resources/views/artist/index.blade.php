@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="section-intro pb-60px">
-            <h2>Our <span class="section-intro__style">Artist</span></h2>
+            <h2>Our <span class="section-intro__style">Artists</span></h2>
         </div>
 
         <div class="row justify-content-center">

@@ -54,40 +54,42 @@
                                     </tr>
                                 @endforeach
                                 <tr>
-                                    <td colspan="1"></td>
+                                    <td></td>
                                     <td class="text-center">
                                         <h5>Total</h5>
                                     </td>
                                     <td class="text-center">
                                         <h5>${{ number_format(session()->get('total')) }}</h5>
                                     </td>
+                                    <td></td>
                                 </tr>
+                                <form action="{{ route('cart.submit') }}" method="post">
+                                    @csrf
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td><label for="booking_date">Booking Date</label>
+                                            <input type="datetime-local" name="booking_date" />
+                                        </td>
+                                    </tr>
+                                    <tr class="out_button_area">
+                                        <td colspan="3"></td>
+                                        @if (Auth::check())
+                                            <td>
+                                                <div class="checkout_btn_inner d-flex align-items-center">
 
-                                <tr class="out_button_area">
-
-                                    <td><a
-                                            href="{{ route('home') }}"><button class="gray_btn">Continue to
-                                                home!</button></a>
-                                    </td>
-                                    <td colspan="2" class="hidden-xs"></td>
-                                    @if (Auth::check())
-                                        <td>
-                                            <div class="checkout_btn_inner d-flex align-items-center">
-                                                <form action="{{ route('cart.submit') }}" method="post">
-                                                    @csrf
-                                                    <label for="booking_date">Booking Date</label>
-                                                    <input type="datetime-local" name="booking_date" />
+                                                    <a href="{{ route('home') }}"><button class="gray_btn">Continue to
+                                                            home!</button></a>
                                                     <button type="submit" class="primary-btn ml-2">Proceed to
                                                         order</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    @else
-                                        <p>You must <a href="{{ route('login') }}"">
-                                                login
-                                            </a> to checkout this cart</p>
-                                    @endif
 
+                                                </div>
+                                            </td>
+                                        @else
+                                            <p>You must <a href="{{ route('login') }}"">
+                                                    login
+                                                </a> to checkout this cart</p>
+                                        @endif
+                                </form>
 
                                 </tr>
 

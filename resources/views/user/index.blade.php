@@ -47,6 +47,27 @@
                                 </div>
                             </div>
                             <hr />
+                            <div class="row">
+                                <div class="col-sm-3 col-md-2 col-5">
+                                    <label>Gender</label>
+                                </div>
+                                @switch(Auth::user()->gender)
+                                    @case(0)
+                                        <div class="col-md-8 col-6">
+                                            Male
+                                        </div>
+                                    @break
+
+                                    @case(1)
+                                        <div class="col-md-8 col-6">
+                                            Female
+                                        </div>
+                                    @break
+
+                                    @default
+                                @endswitch
+                            </div>
+                            <hr />
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="container">
                     <div class="section-intro pb-60px">
-                        <p>Popular tattoo in collection</p>
+                        <p>Popular tattoos in collection</p>
                         <h2>Trending <span class="section-intro__style">Tattoos</span></h2>
                     </div>
                     <div class="row">
@@ -34,7 +34,8 @@
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="card text-center card-product">
                                     <div class="card-product__img">
-                                        <img class="card-img" src="{{ $tattoo->img }}" alt="">
+                                        <a href="{{ route('tattoo', $tattoo->id) }}"><img class="card-img"
+                                                src="{{ $tattoo->img }}" alt=""></a>
                                         <ul class="card-product__imgOverlay">
                                             <li><button onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
                                                         class="ti-search"></i></button></li>

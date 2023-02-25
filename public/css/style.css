@@ -1371,6 +1371,11 @@ a {
 .button:hover {
     border-color: #384aeb;
     background: transparent;
+    color: #333
+}
+.button-header:hover {
+    border-color: #384aeb;
+    background: transparent;
     color: #fff
 }
 
@@ -2606,7 +2611,7 @@ label {
 }
 
 .filter-bar-search {
-    margin: 0px 10px;
+    margin: 0px 0px;
 }
 
 .filter-bar-search input {
@@ -2614,8 +2619,12 @@ label {
     font-size: 14px;
     color: #999999;
     height: 38px;
-    max-width: 6vw;
+    max-width: 6em;
     padding-left: 15px
+}
+
+.media .d-flex {
+    padding-right: 30px;
 }
 
 .filter-bar-search input:focus {
@@ -2635,6 +2644,195 @@ label {
     padding-right: 15px
 }
 
+
+.easypiechart-panel {
+    text-align: center;
+    padding: 1px 0;
+    margin-bottom: 20px;
+}
+
+.placeholder h2 {
+    margin-bottom: 0px;
+}
+
+.donut {
+    width: 100%;
+}
+
+.easypiechart {
+    position: relative;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto 10px auto;
+}
+
+.easypiechart .percent {
+    display: block;
+    position: absolute;
+    font-size: 26px;
+    top: 38px;
+    width: 120px;
+}
+
+#easypiechart-blue .percent {
+    color: #30a5ff;
+}
+
+#easypiechart-teal .percent {
+    color: #1ebfae;
+}
+
+#easypiechart-orange .percent {
+    color: #ffb53e;
+}
+
+#easypiechart-red .percent {
+    color: #ef4040;
+}
+
+#calendar,
+.datepicker-inline {
+    width: 100%;
+}
+
+.no-padding {
+    padding: 0;
+    margin: 0;
+}
+
+.large {
+    font-size: 2em;
+}
+
+.text-muted {
+    color: #c5c7cc;
+}
+
+.color-gray {
+    color: #444444;
+}
+
+.color-blue {
+    color: #30a5ff;
+}
+
+.color-teal {
+    color: #1ebfae;
+}
+
+.color-orange {
+    color: #ffb53e;
+}
+
+.color-red {
+    color: #f9243f;
+}
+
+.panel-blue {
+    background: #30a5ff;
+    color: #fff;
+}
+
+.panel-teal {
+    background: #1ebfae;
+    color: #fff;
+}
+
+.panel-orange {
+    background: #ffb53e;
+    color: #fff;
+}
+
+.panel-red {
+    background: #f9243f;
+    color: #fff;
+}
+
+.dark-overlay {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.panel-blue p,
+.panel-teal p,
+.panel-orange p,
+.panel-red p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.panel-heading {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    height: 60px;
+    line-height: 38px;
+}
+
+.panel-default .panel-heading {
+    background: #fff;
+    border-bottom: 1px solid #e9ecf2;
+    color: #444444;
+}
+
+.panel-footer {
+    background: #fff;
+    border-top: 1px solid #e9ecf2;
+}
+
+.panel-widget {
+    padding: 10px 0;
+    position: relative;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+    text-align: center;
+    color: #333;
+}
+
+.panel-widget .panel-footer {
+    border: 0;
+    text-align: center;
+}
+
+.panel-footer .input-group {
+    padding: 0px;
+    margin: 0 -5px;
+}
+
+.panel-footer .input-group-btn:last-child>.btn,
+.panel-footer .input-group-btn:last-child>.btn-group {
+    margin: 0;
+}
+
+.panel-widget .panel-footer a {
+    color: #999;
+}
+
+.panel-widget .panel-footer a:hover {
+    color: #666;
+    text-decoration: none;
+}
+
+.panel-widget .text-muted {
+    margin-top: -6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.panel-widget .large {
+    color: #373b45;
+    font-size: 3em;
+}
+
+.border-right {
+    border-right: 1px solid #dadbda;
+}
+
+.fa-xl {
+    font-size: 2em;
+}
+
 .filter-bar-search button i,
 .filter-bar-search button span {
     font-size: 14px;
@@ -2644,22 +2842,6 @@ label {
 .sorting {
     margin-top: 10px;
     margin-right: 10px
-}
-
-.sorting .nice-select {
-    border-radius: 0px;
-    border: 1px solid #eee;
-    padding-right: 50px;
-    height: 38px;
-    color: #999999
-}
-
-.sorting .nice-select:after {
-    right: 18px
-}
-
-.sorting .nice-select .list {
-    border-radius: 0px
 }
 
 .sidebar-categories .head {
@@ -4408,7 +4590,7 @@ ol {
 }
 
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner {
-    margin-left: -395px
+    margin-left: -226px
 }
 
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner .primary-btn {

@@ -4,3 +4,6 @@
 <script src="/js/main.js"></script>
 <script type="text/javascript" src="{{ asset('/js/cart.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/edit_user.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/search.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('/js/easypiechart-data.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/easypiechart.js') }}"></script> --}}

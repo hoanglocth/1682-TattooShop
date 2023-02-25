@@ -5,7 +5,7 @@
         <div class="container">
             <div class="blog-banner">
                 <div class="text-center">
-                    <h1>Category Management</h1>
+                    <h1>Categories Management</h1>
                 </div>
             </div>
 

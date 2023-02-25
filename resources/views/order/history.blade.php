@@ -14,8 +14,8 @@
                             <th>ID Order</th>
                             <th>Price</th>
                             <th>Booking Date</th>
+                            <th>Payment Status</th>
                             <th>Status</th>
-                            <th>Note</th>
                             <th>Details</th>
                         </tr>
                     </thead>
@@ -23,9 +23,27 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }}</td>
-                                <td>{{ number_format($order->price) }} VND</td>
-                                <td>{{ $order->date_borrow }}</td>
-                                <td>{{ $order->date_give_back }}</td>
+                                <td>${{ number_format($order->price) }}</td>
+                                <td>{{ $order->date_booking }}</td>
+                                @switch($order->payment_status)
+                                    @case(0)
+                                        <td>
+                                            Not Pay
+                                        </td>
+                                    @break
+
+                                    @case(1)
+                                        <td>
+                                            Paypal paid
+                                        </td>
+                                    @break
+
+                                    @case(2)
+                                        <td>
+                                            Money Cash
+                                        </td>
+                                    @break
+                                @endswitch
                                 @switch($order->status)
                                     @case(3)
                                         <td>
@@ -39,7 +57,7 @@
                                         </td>
                                     @break
                                 @endswitch
-                                <td><a href="{{ route('order.detail',$order->id) }}"><button type="button"
+                                <td><a href="{{ route('order.detail', $order->id) }}"><button type="button"
                                             class="btn btn-xs btn-warning">View Details</button></a></td>
                             </tr>
                         @endforeach

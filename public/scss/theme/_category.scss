@@ -42,25 +42,6 @@
   }
 }
 
-//--------- Start storting -----------//
-.sorting {
-	margin-top: 10px;
-	margin-right: 10px;
-	.nice-select {
-		border-radius: 0px;
-		border: 1px solid #eee;
-    padding-right: 50px;
-    height: 38px;
-    color: #999999;
-		&:after {
-			right: 18px;
-		}
-		.list {
-			border-radius: 0px;
-		}
-	}
-}
-
 
 //--------- Start Sidebar Category Dropdown ---------//
 .sidebar-categories {

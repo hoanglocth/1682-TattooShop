@@ -84,6 +84,7 @@ class UserDataTable extends DataTable
             Column::make('address'),
             Column::make('gender'),
             Column::make('created_at'),
+            Column::make('updated_at'),
         ];
     }
 

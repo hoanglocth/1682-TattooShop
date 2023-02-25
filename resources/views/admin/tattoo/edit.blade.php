@@ -37,7 +37,7 @@
 
                             <div class="col-md-12 form-group" style="margin-bottom: 60px">
                                 <label for="">Artist</label>
-                                <select name="artist" class="form-control nice-select w-100">
+                                <select name="artist" class="form-control w-100">
                                     @foreach ($artists as $artist)
                                         <option value="{{ $artist->id }}" {{$tattoo->artist_id == $artist->id ? 'selected' : ''}}>{{ $artist->name }}</option>
                                     @endforeach
