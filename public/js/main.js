@@ -6,36 +6,13 @@ $(function () {
     forceHeight: false
   });
 
-  //------- Active Nice Select --------//
-  // $('select').niceSelect();
-
-  //------- hero carousel -------//
-  $(".hero-carousel").owlCarousel({
-    items: 3,
-    margin: 10,
-    autoplay: false,
-    autoplayTimeout: 5000,
-    loop: true,
-    nav: false,
-    dots: false,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 2
-      },
-      810: {
-        items: 3
-      }
-    }
-  });
   const searchButton = document.getElementById('search-button');
   const searchInput = document.getElementById('search-input');
   searchButton.addEventListener('click', () => {
     const inputValue = searchInput.value;
     alert(inputValue);
   });
+  
   //------- Best Seller Carousel -------//
   if ($('.owl-carousel').length > 0) {
     $('#bestSellerCarousel').owlCarousel({
@@ -86,39 +63,12 @@ $(function () {
     else sticky.removeClass('fixed');
   });
 
-  //------- Price Range slider -------//
-  if (document.getElementById("price-range")) {
-
-    var nonLinearSlider = document.getElementById('price-range');
-
-    noUiSlider.create(nonLinearSlider, {
-      connect: true,
-      behaviour: 'tap',
-      start: [500, 4000],
-      range: {
-        // Starting at 500, step the value by 500,
-        // until 4000 is reached. From there, step by 1000.
-        'min': [0],
-        '10%': [500, 500],
-        '50%': [4000, 1000],
-        'max': [10000]
-      }
-    });
-
-
-    var nodes = [
-      document.getElementById('lower-value'), // 0
-      document.getElementById('upper-value')  // 1
-    ];
-
-    // Display the slider value and how far the handle moved
-    // from the left edge of the slider.
-    nonLinearSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
-      nodes[handle].innerHTML = values[handle];
-    });
-
-  }
-
 });
 
+
+window.setTimeout(function() {
+  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove(); 
+  });
+}, 4000);
 

@@ -8,21 +8,21 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-home"></i></span>
                         <div class="media-body">
-                            <h3>California United States</h3>
-                            <p>Santa monica bullevard</p>
+                            <h3>Da Nang, Viet Nam</h3>
+                            <p>2nd Floor, Thang Nam Coffee House</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-headphone"></i></span>
                         <div class="media-body">
-                            <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
-                            <p>Mon to Fri 9am to 6pm</p>
+                            <h3><a href="tel:454545654">0912 345 678</a></h3>
+                            <p>Mon to Fri 7am to 6pm</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3><a href="mailto:support@colorlib.com">support@colorlib.com</a></h3>
+                            <h3><a href="mailto:support@colorlib.com">tattoodanang@gmail.com</a></h3>
                             <p>Send us your query anytime!</p>
                         </div>
                     </div>

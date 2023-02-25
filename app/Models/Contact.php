@@ -2,6 +2,7 @@
   
 namespace App\Models;
   
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mail;
@@ -27,5 +28,10 @@ class Contact extends Model
             $adminEmail = "admin@gmail.com";
             Mail::to($adminEmail)->send(new ContactMail($item));
         });
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

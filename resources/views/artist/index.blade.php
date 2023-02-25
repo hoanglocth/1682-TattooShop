@@ -3,8 +3,7 @@
 @section('content')
     <div class="container">
         <div class="section-intro pb-60px">
-            <p>Popular Item in the market</p>
-            <h2>Latest <span class="section-intro__style">News</span></h2>
+            <h2>Our <span class="section-intro__style">Artist</span></h2>
         </div>
 
         <div class="row justify-content-center">
@@ -12,7 +11,7 @@
                 <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
                     <div class="card card-blog">
                         <div class="card-blog__img">
-                            <img class="card-artist rounded-0" src="{{ $artist->img }}" alt="">
+                            <img class="center-cropped" style="width: 30em; height:30em" src="{{ $artist->img }}" alt="">
                         </div>
                         <div class="card-body">
                             <h4 class="card-blog__title"><a href="{{ route('artist.detail', $artist->id) }}">{{ $artist->name }}</a></h4>

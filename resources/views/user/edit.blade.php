@@ -8,7 +8,7 @@
                     @include('user.layouts.menu')
                 </div>
                 <div class="col-9 infocontainer">
-                    <h1>Edit Account</h1>
+                    <h2>Edit Account</h2>
                     <div class="panel panel-default">
                         <form class="form-horizontal" action="{{ route('account.store') }}" method="post">
                             @csrf
@@ -67,17 +67,40 @@
                                     </span>
                                 @endif
                             </div>
-							<div class="form-group">
-								<label><i class="required">(*)</i>New password</label>
-								<input name="password" id="password" value="" type="password"
-									class="form-control">
-							</div>
-							<div class="form-group">
-								<label><i class="required">(*)</i>Confirm new password</label>
-								<input name="confirm_password" id="confirm_password" value="" type="password"
-									class="form-control">
-								<span style="display: block" id='message'></span>
-							</div>
+
+                            <div class="form-group">
+                                <label><i class="required">(*)</i>Gender</label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="gender"value="0" {{ Auth::user()->gender == 0 ? 'checked' : '' }}>Male
+                                    <input type="radio" name="gender" value="1" {{ Auth::user()->gender == 1 ? 'checked' : '' }}>Female
+                                </label>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Change password </label>
+                                <input id="newpass" type="checkbox" value="1">
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback" style="display: block" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                                @endif
+                                @if ($errors->has('confirm_password'))
+                                <span class="invalid-feedback" style="display: block" role="alert">
+                                    <strong>{{ $errors->first('confirm_password') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                            <div id="formnewpass" style="display: none;">
+                                <div class="form-group">
+                                    <label>New password</label>
+                                    <input name="password" id="password" value="" type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm new password</label>
+                                    <input name="confirm_password" id="confirm_password" value="" type="password" class="form-control">
+                                    <span style="display: block"  id='message'></span>
+                                </div>                        
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-default btn-md pull-right">Save Change</button>

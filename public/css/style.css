@@ -914,6 +914,9 @@ a {
     .card-img {
         width: 13em;
         height: 13em;
+        object-fit: cover;
+        /* Do not scale the image */
+        object-position: center;
         border-radius: calc(.25rem - 1px);
     }
 
@@ -921,8 +924,11 @@ a {
 
 @media (min-width: 1200px) {
     .card-img {
-        width: 15em;
-        height: 15em;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        /* Do not scale the image */
+        object-position: center;
         border-radius: calc(.25rem - 1px);
     }
 }
@@ -2079,6 +2085,39 @@ a {
     font-weight: 400
 }
 
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.center-cropped {
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center;
+    /* Center the image within the element */
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+input[type='radio'] {
+    margin-left: 50px;
+}
+
+input:focus:not([readonly]) {
+    border: 1px solid #e74c3c;
+    box-shadow: 0 0 0 1px #e74c3c;
+}
+
+label {
+    font-weight: bold;
+    font-size: 110%;
+}
+
 .blog-pagination .page-item.active .page-link {
     background-color: #384aeb;
     border-color: transparent;
@@ -2512,6 +2551,7 @@ a {
 }
 
 .contact-info .media-body h3 {
+    text-align: left;
     font-size: 16px;
     margin-bottom: 0
 }

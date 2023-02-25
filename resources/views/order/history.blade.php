@@ -7,7 +7,7 @@
                 @include('user.layouts.menu')
             </div>
             <div class="col-9 infocontainer">
-                <h1>History Orders</h1>
+                <h2>History Orders</h2>
                 <table id="example" class="display text-center" style="width:100%">
                     <thead>
                         <tr>

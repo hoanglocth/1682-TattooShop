@@ -7,7 +7,7 @@
                 @include('user.layouts.menu')
             </div>
             <div class="col-9 infocontainer">
-                <h1>Orders Detail ID: {{ $order->id }}</h1>
+                <h2>Orders Detail ID: {{ $order->id }}</h2>
                 <table id="example" class="display text-center" style="width:100%">
                     <thead>
                         <tr>

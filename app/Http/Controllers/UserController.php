@@ -19,7 +19,7 @@ class UserController extends Controller
 	public function store(EditUserRequest $request){
 		
 		if($request->password === null){
-			$data = $request->only('phone', 'firstname', 'lastname', 'address');
+			$data = $request->only('gender', 'phone', 'firstname', 'lastname', 'address');
 		}
 		else{
 			$data = $request->only('gender', 'phone', 'firstname', 'lastname', 'address', 'password');

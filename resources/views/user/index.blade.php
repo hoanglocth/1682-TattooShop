@@ -8,12 +8,12 @@
                     @include('user.layouts.menu')
                 </div>
                 <div class="col-9 infocontainer">
-                    <h1 class="page-header">Info Account</h1>
+                    <h2 class>Info Account</h2>
                     <div class="panel panel-default">
                         <div class="tab-content ml-1" id="myTabContent">
                             <div class="row">
                                 <div class="col-sm-3 col-md-2 col-5">
-                                    <label style="font-weight:bold;">Full Name</label>
+                                    <label>Full Name</label>
                                 </div>
                                 <div class="col-md-8 col-6">
                                     {{ Auth::user()->lastname }} {{ Auth::user()->firstname }}
@@ -22,7 +22,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-sm-3 col-md-2 col-5">
-                                    <label style="font-weight:bold;">E-Mail</label>
+                                    <label>E-Mail</label>
                                 </div>
                                 <div class="col-md-8 col-6">
                                     {{ Auth::user()->email }}
@@ -31,7 +31,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-sm-3 col-md-2 col-5">
-                                    <label style="font-weight:bold;">Phone</label>
+                                    <label>Phone</label>
                                 </div>
                                 <div class="col-md-8 col-6">
                                     {{ Auth::user()->phone }}
@@ -40,7 +40,7 @@
                             <hr />
                             <div class="row">
                                 <div class="col-sm-3 col-md-2 col-5">
-                                    <label style="font-weight:bold;">Address</label>
+                                    <label>Address</label>
                                 </div>
                                 <div class="col-md-8 col-6">
                                     {{ Auth::user()->address }}

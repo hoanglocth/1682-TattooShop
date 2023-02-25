@@ -49,42 +49,7 @@
         <div class="container">
             <div class="row s_product_inner">
                 <div class="col-lg-6">
-                    <div class="owl-carousel owl-theme s_Product_carousel owl-loaded owl-drag">
-                        <div class="owl-stage-outer">
-                            <div class="owl-stage"
-                                style="transform: translate3d(-1080px, 0px, 0px); transition: all 0s ease 0s; width: 2700px;">
-                                <div class="owl-item cloned" style="width: 540px;">
-                                    <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ $tattoo->img }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 540px;">
-                                    <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ $tattoo->img }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 540px;">
-                                    <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ $tattoo->img }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 540px;">
-                                    <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ $tattoo->img }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 540px;">
-                                    <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ $tattoo->img }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
-                                    aria-label="Previous">‹</span></button><button type="button" role="presentation"
-                                class="owl-next"><span aria-label="Next">›</span></button></div>
-                        <div class="owl-dots disabled"></div>
-                    </div>
+                    <img class="center-cropped" style="width: 30em; height:30em" src="{{ $tattoo->img }}" alt="">
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text">
@@ -248,9 +213,6 @@
                                                                                 value="{{ $i }}"
                                                                                 id="rating-star-{{ $i }}"
                                                                                 checked>
-                                                                            <label for="rating-star-{{ $i }}"
-                                                                                class="rating-label"><i
-                                                                                    class="fas fa-star"></i></label>
                                                                         </td>
                                                                     @else
                                                                         <td>

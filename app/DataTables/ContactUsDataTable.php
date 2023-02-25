@@ -25,7 +25,7 @@ class ContactUsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($row) {
                 $actionBtn = '<div class="btn-group" role="group" >                
-                <a href="mailto:'.$row->email.'" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-mail"></i></a>
+                <a href="mailto:'.$row->email.'" class="delete btn btn-success btn-sm mr-1"><i class="fa fa-envelope"></i></a>
                 <a href="' . route('admin.contactus.remove', $row->id) . '" class="delete btn btn-danger btn-sm mr-1"><i class="fa fa-trash"></i></a>
                 </div>';
                 return $actionBtn;

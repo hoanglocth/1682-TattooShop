@@ -7,7 +7,7 @@
             <div class="col-3">
                 @include('user.layouts.menu')
             </div>
-            <div class="col-9">
+            <div class="col-9 infocontainer">
                 <h2>Confirmed order</h2>
                 @if ($result == 0)
                     <li>No data available in here</li>

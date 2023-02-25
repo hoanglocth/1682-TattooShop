@@ -6,16 +6,16 @@
             <div class="row no-gutters align-items-center pt-60px">
                 <div class="col-5 d-none d-sm-block">
                     <div class="hero-banner__img">
-                        <img class="img-fluid" src="{{ asset('images/hero-banner.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('images/banner.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
                     <div class="hero-banner__content">
-                        <h4>Shop is fun</h4>
-                        <h1>Browse Our Premium Product</h1>
-                        <p>Us which over of signs divide dominion deep fill bring they're meat beho upon own earth without
-                            morning over third. Their male dry. They are great appear whose land fly grass.</p>
-                        <a class="button button-hero" href="#">Browse Now</a>
+                        <h4>Tattoo is an art</h4>
+                        <h1>MY TATTOOS ARE MY STORY</h1>
+                        <p>It is not a temporary game, but the tattoo engraved on the body will follow us throughout the
+                            life, so, decided to tattoo, it is necessary to find a good tattoo artist - prestige.</p>
+                        <a class="button button-hero" href="#">Introduction</a>
                     </div>
                 </div>
             </div>
@@ -26,8 +26,8 @@
             <div class="row">
                 <div class="container">
                     <div class="section-intro pb-60px">
-                        <p>Popular Item in the market</p>
-                        <h2>Best <span class="section-intro__style">Sellers</span></h2>
+                        <p>Popular tattoo in collection</p>
+                        <h2>Trending <span class="section-intro__style">Tattoos</span></h2>
                     </div>
                     <div class="row">
                         @foreach ($tattoos as $tattoo)
@@ -36,19 +36,17 @@
                                     <div class="card-product__img">
                                         <img class="card-img" src="{{ $tattoo->img }}" alt="">
                                         <ul class="card-product__imgOverlay">
-                                            <li><button
-                                                    onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
+                                            <li><button onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
                                                         class="ti-search"></i></button></li>
                                             <li><button><i class="ti-shopping-cart"></i></button></li>
-                                            <li><button><i class="ti-heart"></i></button></li>
                                         </ul>
                                     </div>
                                     <div class="card-body">
-                                        <p>Accessories</p>
+                                        <p>Design by {{ $tattoo->artists->name }}</p>
                                         <h4 class="card-product__title"><a
                                                 href="single-product.html">{{ $tattoo->name }}</a>
                                         </h4>
-                                        <p class="card-product__price">{{ $tattoo->price }}</p>
+                                        <p class="card-product__price">${{ $tattoo->price }}</p>
                                     </div>
                                 </div>
                             </div>

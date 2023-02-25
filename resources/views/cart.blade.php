@@ -29,8 +29,8 @@
                                         <td>
                                             <div class="media">
                                                 <div class="d-flex">
-                                                    <img src="{{ $tattoo['img'] }}" alt="..." class="img-responsive"
-                                                        height="100px" width="70px" />
+                                                    <img src="{{ $tattoo['img'] }}" alt="..." class="center-cropped"
+                                                        style="width: 6em; height:6em" />
                                                 </div>
                                                 <div class="media-body">
                                                     <h4><a class="nomargin" href="">{{ $tattoo['name'] }}</a></h4>
@@ -56,22 +56,23 @@
                                 <tr>
                                     <td colspan="1"></td>
                                     <td class="text-center">
-                                        <h4>Total</h4>
+                                        <h5>Total</h5>
                                     </td>
                                     <td class="text-center">
-                                        <h4>${{ number_format(session()->get('total')) }}</h4>
+                                        <h5>${{ number_format(session()->get('total')) }}</h5>
                                     </td>
                                 </tr>
 
                                 <tr class="out_button_area">
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <td style="vertical-align: bottom;padding-bottom: 20px;"><a
-                                                href="{{ route('home') }}"><button class="gray_btn">Continue to
-                                                    home!</button></a>
-                                        </td>
-                                        <td colspan="2" class="hidden-xs"></td>
-                                        @if (Auth::check())
-                                            <td>
+
+                                    <td><a
+                                            href="{{ route('home') }}"><button class="gray_btn">Continue to
+                                                home!</button></a>
+                                    </td>
+                                    <td colspan="2" class="hidden-xs"></td>
+                                    @if (Auth::check())
+                                        <td>
+                                            <div class="checkout_btn_inner d-flex align-items-center">
                                                 <form action="{{ route('cart.submit') }}" method="post">
                                                     @csrf
                                                     <label for="booking_date">Booking Date</label>
@@ -79,11 +80,14 @@
                                                     <button type="submit" class="primary-btn ml-2">Proceed to
                                                         order</button>
                                                 </form>
-                                            </td>
-                                        @else
-                                            <p>You must login to checkout this cart</p>
-                                        @endif
-                                    </div>
+                                            </div>
+                                        </td>
+                                    @else
+                                        <p>You must <a href="{{ route('login') }}"">
+                                                login
+                                            </a> to checkout this cart</p>
+                                    @endif
+
 
                                 </tr>
 
