@@ -17,9 +17,14 @@ class ArtistFactory extends Factory
 	 */
 	public function definition()
 	{
+		$files = File::files(public_path('images/artist_seed'));
+		$images = [];
+		foreach ($files as $file) {
+			$images[] = '/images/artist_seed'.'/'.$file->getRelativePathname();
+		}
 		return [
 			'name' => $this->faker->name(),
-			'img' => '/images/default-artist.jpg',
+			'img' => $this->faker->randomElement($images),
 			'describes' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
 		];
 	}

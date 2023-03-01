@@ -15,6 +15,8 @@
                                 alt=""></a>
 
                         <ul class="card-product__imgOverlay">
+                            <li><button onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
+                                class="ti-search"></i></button></li>
                             <li><button class="get-tattoo-btt" data-tattoo-id="{{ $tattoo->id }}"><i
                                         class="ti-shopping-cart"></i></button></li>
                             </li>
@@ -37,7 +39,7 @@
     </div>
 @else
     <div class="alert alert-warning alert-dismissible fade show">
-        <li>Nothing to show, please input key to search more books !</li>
+        <li>Nothing to show, please input key to search more tattoos !</li>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

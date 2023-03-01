@@ -46,7 +46,7 @@
 
                             <div class="col-md-12 form-group" style="margin-bottom: 60px">
                                 <label for="">Category</label>
-                                <select name="category" class="form-control nice-select w-100">
+                                <select name="category" class="form-control w-100">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{$tattoo->category_id == $category->id ? 'selected' : ''}}>{{ $category->name }}</option>
                                     @endforeach

@@ -15,7 +15,7 @@
                         <h1>MY TATTOOS ARE MY STORY</h1>
                         <p>It is not a temporary game, but the tattoo engraved on the body will follow us throughout the
                             life, so, decided to tattoo, it is necessary to find a good tattoo artist - prestige.</p>
-                        <a class="button button-hero" href="#">Introduction</a>
+                        <a class="button button-hero" href="{{ route('introduction')}}">Introduction</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,8 @@
                                         <ul class="card-product__imgOverlay">
                                             <li><button onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
                                                         class="ti-search"></i></button></li>
-                                            <li><button><i class="ti-shopping-cart"></i></button></li>
+                                            <li><button class="get-tattoo-btt" data-tattoo-id="{{ $tattoo->id }}"><i
+                                                        class="ti-shopping-cart"></i></button></li>
                                         </ul>
                                     </div>
                                     <div class="card-body">

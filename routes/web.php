@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/introduction', [App\Http\Controllers\IntroductionController::class, 'index'])->name('introduction');
 Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
 Route::post('/category/{id}', [App\Http\Controllers\CategoryController::class, 'listTatooPaginate'])->name('category.paginate');
 Route::post('/tattoo', [App\Http\Controllers\TattooController::class, 'listTatooPaginate'])->name('tattoo.index.paginate');

@@ -18,8 +18,11 @@
                         @if (!Auth::check() or Auth::user()->roles == 0)
                             <li class="nav-item {{ Route::currentRouteName() === 'home' ? 'active' : '' }}"><a
                                     class="nav-link" href="{{ route('home') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link">Introduction</a></li>
-                            <li class="nav-item  {{ Route::currentRouteName() === 'tattoo.index' ? 'active' : '' }}">
+                            <li class="nav-item {{ Route::currentRouteName() === 'introduction' ? 'active' : '' }}"><a
+                                    class="nav-link" href="{{ route('introduction') }}">Introduction</a></li>
+                            <li
+                                class="nav-item
+                                    {{ Route::currentRouteName() === 'tattoo.index' ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('tattoo.index') }}">Tattoo</a>
                             </li>
                             <li class="nav-item {{ Route::currentRouteName() === 'artist.index' ? 'active' : '' }}">

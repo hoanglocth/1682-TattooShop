@@ -63,6 +63,8 @@
                                                     src="{{ $tattoo->img }}" alt=""></a>
 
                                             <ul class="card-product__imgOverlay">
+                                                <li><button onclick="window.location='{{ route('tattoo', $tattoo->id) }}'"><i
+                                                    class="ti-search"></i></button></li>
                                                 <li><button class="get-tattoo-btt" data-tattoo-id="{{ $tattoo->id }}"><i
                                                             class="ti-shopping-cart"></i></button></li>
                                                 </li>

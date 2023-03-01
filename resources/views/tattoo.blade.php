@@ -236,10 +236,10 @@
                                                 <input type="label" value="{{ $tattoo->id }}" name="tattoo_id"
                                                     id="tattoo_id" style="display: none;">
                                                 <input type="label" value="{{ Auth::user()->id }}" name="user_id"
-                                                    id="book-id" style="display: none;">
+                                                    id="tattoo_id" style="display: none;">
                                                 <input type="label"
                                                     value="{{ $user_rating ? $user_rating->id : null }}" name="rating_id"
-                                                    id="book-id" style="display: none;">
+                                                    id="tattoo_id" style="display: none;">
 
                                                 <div style="width: 100%:height: 80px">
 

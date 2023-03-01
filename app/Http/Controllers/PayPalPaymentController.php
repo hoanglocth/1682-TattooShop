@@ -10,6 +10,7 @@ class PayPalPaymentController extends Controller
 {
     public function handlePayment()
     {
+
         $order = Order::where('status', '=', 2)->where('user_id', '=', \Auth::user()->id)->first();
         if ($order == null) {
             abort(404);
@@ -18,7 +19,8 @@ class PayPalPaymentController extends Controller
             return redirect()->route('order.confirmed');
         }
         $product = [];
-        $product['invoice_id'] = (int) $order['id'] + 9999;
+        // $product['invoice_id'] = (int) $order['id'] + 10;
+        $product['invoice_id'] = $order['id'].'abc';
         $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
 
         $product['items'] = [
@@ -57,7 +59,7 @@ class PayPalPaymentController extends Controller
             return redirect()->route('order.confirmed');
         }
         $product = [];
-        $product['invoice_id'] = (int) $order['id'] + 9999;
+        $product['invoice_id'] = (int) $order['id'] + 10;
         $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
 
         $product['items'] = [
