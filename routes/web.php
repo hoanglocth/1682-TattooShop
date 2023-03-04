@@ -34,6 +34,7 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 Route::get('/search/name', [App\Http\Controllers\SearchController::class, 'search.name']);
 Route::get('/search',  [App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
 Route::post('/search/ajax',  [App\Http\Controllers\SearchController::class, 'searchAjax'])->name('search.ajax');
+Route::get('/search/ajax',  [App\Http\Controllers\SearchController::class, 'index'])->name('search.ajax.get');
 
 
 Route::get('/artist',  [App\Http\Controllers\ArtistController::class, 'index'])->name('artist.index');

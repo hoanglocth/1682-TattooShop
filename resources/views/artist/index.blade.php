@@ -6,9 +6,9 @@
             <h2>Our <span class="section-intro__style">Artists</span></h2>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-around">
             @foreach ($artists as $key => $artist)
-                <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+                <div class="col col-lg-5">
                     <div class="card card-blog">
                         <div class="card-blog__img">
                             <img class="center-cropped" style="width: 30em; height:30em" src="{{ $artist->img }}" alt="">
